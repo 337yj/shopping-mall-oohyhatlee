@@ -1,0 +1,15 @@
+.homeWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  .logo {
+    width: 400px;
+  }
+}
+
+.mainImage {
+  width: 600px;
+}
