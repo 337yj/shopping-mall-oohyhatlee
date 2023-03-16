@@ -1,0 +1,27 @@
+@use "../../styles/mixins/" as m;
+
+.container {
+  @include m.flex(center, center, column);
+  width: 100%;
+
+  // margin-top: 48px;
+  margin: 50px auto;
+
+  .uploadImage {
+    width: 450px;
+    height: 600px;
+    object-fit: cover;
+  }
+  .btn {
+    background-color: #000;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+
+  .uploadForm {
+    @include m.flex(center, center, column);
+    // height: 1000px;
+  }
+}
