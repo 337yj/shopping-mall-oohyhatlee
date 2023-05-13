@@ -1,8 +1,8 @@
-import React from 'react';
-import logo from '../../assets/images/logo.png';
-import mainImage from '../../assets/images/mainImg.jpg';
-import Products from '../../components/Products';
-import styles from './home.module.scss';
+import React from "react";
+import logo from "../../assets/images/logo.png";
+import mainImage from "../../assets/images/mainImg.jpg";
+import Products from "../../components/Common/Products";
+import styles from "./home.module.scss";
 
 const Home = () => {
   return (
