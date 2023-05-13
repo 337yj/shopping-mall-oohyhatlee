@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { login, logout, onUserStateChange } from '../../api/firebase';
-import { useAuthContext } from '../../context/AuthContext';
-import styles from './header.module.scss';
-import logo from '../../assets/images/logo.png';
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { login, logout, onUserStateChange } from "../../api/firebase";
+import { useAuthContext } from "../../context/AuthContext";
+import styles from "./header.module.scss";
+import logo from "../../assets/images/logo.png";
+import CartStatus from "../Common/CartStatus";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -26,27 +27,31 @@ const Header = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   // /about /shop ~~
   return (
     <header
-      className={`${styles.headerWrap} ${scrolled ? styles.scrolled : ''}`}
+      className={`${styles.headerWrap} ${scrolled ? styles.scrolled : ""}`}
     >
       <nav className={styles.header}>
         <ul>
           <li>ABOUT</li>
-          <li onClick={onClick('products')}>SHOP</li>
+          <li onClick={onClick("products")}>SHOP</li>
           <li>COMMUNITY</li>
           {/* <img src={logo} className={styles.logo}></img> */}
           <li>SEARCH</li>
-          {user && <li>CART</li>}
+          {user && (
+            <li onClick={onClick("carts")}>
+              <CartStatus />
+            </li>
+          )}
           {user && user.isAdmin && (
-            <li onClick={onClick('products/new')}>NEW</li>
+            <li onClick={onClick("products/new")}>NEW</li>
           )}
           {/* 화면 작아지면 걍 없애자 최소~px부터 나오게하자 */}
           {user && <span>{user.displayName}</span>}

@@ -2,8 +2,8 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-} from 'react-router-dom';
-import Layout from '../components/Layout';
+} from "react-router-dom";
+import Layout from "../components/Layout";
 import {
   Home,
   AllProducts,
@@ -12,7 +12,7 @@ import {
   MyCart,
   NotFound,
   ProtectedRoute,
-} from '../pages';
+} from "../pages";
 
 const router = (
   <Route path="/" element={<Layout />}>
@@ -33,6 +33,7 @@ const router = (
     {/* <Route path="carts" element={<ProtectedRoute />}>
       <Route element={<MyCart />}/>
     </Route> */}
+
     <Route
       path="carts"
       element={
@@ -40,7 +41,7 @@ const router = (
           <MyCart />
         </ProtectedRoute>
       }
-    ></Route>
+    />
   </Route>
 );
 

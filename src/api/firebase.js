@@ -1,13 +1,13 @@
-import { initializeApp } from 'firebase/app';
-import { v4 as uuid } from 'uuid';
+import { initializeApp } from "firebase/app";
+import { v4 as uuid } from "uuid";
 import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
-} from 'firebase/auth';
-import { getDatabase, ref, set, get, remove } from 'firebase/database';
+} from "firebase/auth";
+import { getDatabase, ref, set, get, remove } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -45,10 +45,10 @@ export const onUserStateChange = (callback) => {
 // 어드민 사용자
 // 외부에서 필요한 데이터는 아니니 export생략, 네트워크 통신을 할거니까 async
 const adminUser = async (user) => {
-  return get(ref(database, 'admins')).then((snapshot) => {
+  return get(ref(database, "admins")).then((snapshot) => {
     if (snapshot.exists()) {
       const admins = snapshot.val();
-      console.log(admins);
+      // console.log(admins);
       // 받아온 admins배열안에 user의 uid가 있는지 확인
       const isAdmin = admins.includes(user.uid);
       return { ...user, isAdmin };
@@ -69,13 +69,45 @@ export const addNewProduct = async (product, imageUrl) => {
     id,
     price: parseInt(product.price),
     image: imageUrl,
-    options: product.options.split(','),
+    options: product.options.split(","),
   });
 };
 
+// export const addOrUpdateToCart = async (userId, product) => {
+//   const cartRef = ref(database, `carts/${userId}/${product.id}`);
+//   const snapshot = await get(cartRef);
+
+//   if (snapshot.exists()) {
+//     const currentOption = snapshot.val().option;
+//     if (currentOption === product.option) {
+//       // 같은 옵션인 경우 수량을 더해줌
+//       const currentQuantity = snapshot.val().quantity;
+//       const updatedProduct = { ...product, quantity: currentQuantity + 1 };
+//       return set(cartRef, updatedProduct);
+//     } else {
+//       // 다른 옵션인 경우 새로운 상품으로 추가
+//       return addNewProductToCart(userId, product);
+//     }
+//   } else {
+//     // 새로운 상품인 경우 추가
+//     return addNewProductToCart(userId, product);
+//   }
+// };
+export async function addOrUpdateToCart(userId, product) {
+  const uniqueId = `${product.id}_${JSON.stringify(product.option)}`;
+  return set(ref(database, `carts/${userId}/${uniqueId}`), product);
+}
+
+// export const addNewProductToCart = async (userId, product) => {
+//   return set(ref(database, `carts/${userId}/${product.id + product.option}`), {
+//     ...product,
+//     quantity: 1,
+//   });
+// };
+
 // 제품 정보 가져오기
 export const getProducts = async () => {
-  return get(ref(database, 'products')).then((snapshot) => {
+  return get(ref(database, "products")).then((snapshot) => {
     // snapshot은 key-value의 객체 형태라, 지금은 값만 필요하니까 values를 씀
     if (snapshot.exists()) {
       // console.log(snapshot);
@@ -93,17 +125,45 @@ export const getCart = async (userId) => {
   // 사용자의 아이디별로 장바구니 보관해줄거임
   return get(ref(database, `carts/${userId}`)).then((snapshot) => {
     const items = snapshot.val() || {};
+    console.log(Object.values(items));
     return Object.values(items);
   });
 };
 
 // 장바구니 추가/ 업뎃
 // 제품아이디, 가격, 추가수량...
-export const addOrUpdateToCart = (userId, product) => {
-  return set(ref(database, `carts/${userId}/${product.id}`), product);
-};
+// export const addOrUpdateToCart = async (userId, product) => {
+//   return set(ref(database, `carts/${userId}/${product.id}`), product);
+// };
+// export const addOrUpdateToCart = async (userId, product) => {
+//   const cartRef = ref(database, `carts/${userId}/${product.id}`);
+
+//   const snapshot = await get(cartRef);
+
+//   if (snapshot.exists()) {
+//     // 기존 상품이 이미 존재하는 경우 수량을 더해줌
+//     const currentOption = snapshot.val().option;
+//     if (currentOption === product.option) {
+//       // 같은 옵션인 경우 수량을 더해줌
+//       const currentQuantity = snapshot.val().quantity;
+//       return set(cartRef, {
+//         ...product,
+//         quantity: currentQuantity + 1,
+//       });
+//     } else {
+//       // 다른 옵션인 경우 새로운 상품으로 인식하여 추가
+//       return set(
+//         ref(database, `carts/${userId}/${product.id + product.option}`),
+//         product
+//       );
+//     }
+//   } else {
+//     // 새로운 상품인 경우 추가
+//     return set(cartRef, product);
+//   }
+// };
 
 // 장바구니 삭제
-export const removeFromCart = (userId, productId) => {
+export const removeFromCart = async (userId, productId) => {
   return remove(ref(database, `carts/${userId}/${productId}`));
 };

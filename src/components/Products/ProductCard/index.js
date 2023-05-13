@@ -1,6 +1,6 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import styles from './productCard.module.scss';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "./productCard.module.scss";
 
 const ProductCard = ({
   product,

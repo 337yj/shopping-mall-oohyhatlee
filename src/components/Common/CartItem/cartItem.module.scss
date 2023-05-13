@@ -1,0 +1,12 @@
+@use "../../../styles/constants" as c;
+@use "../../../styles/mixins/" as m;
+
+.wrapper {
+  @include m.flex(row, space-between, center);
+  // width: 500px;
+  margin: 2px 0;
+
+  .productImg {
+    width: 180px;
+  }
+}

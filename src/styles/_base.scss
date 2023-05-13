@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap");
 
 *,
 *:after,
 *:before {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -12,19 +12,28 @@
 html,
 body {
   font-size: 16px;
-  // max-width: 980px;
+
   // height: 100%;
   // margin: 0 auto;
   overflow: hidden;
   overflow-y: scroll;
 }
 
+#root {
+  width: 100%;
+  // max-width: 1536px;
+  margin: 0 auto;
+  // display: flex;
+  // flex-direction: column;
+  // justify-items: center;
+  // align-items: center;
+}
+
 body,
 textarea,
 button {
-  font-family: 'Noto Sans', sans-serif,
-    -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, 'Helvetica Neue',
-    Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans", sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
   padding: 0;
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -43,9 +52,9 @@ input:-webkit-autofill:active {
 }
 
 a {
-  text-decoration: none; 
+  text-decoration: none;
   outline: none;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 
   &:hover,
   &:active {
@@ -69,13 +78,12 @@ ol {
 }
 
 pre {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 textarea {
   resize: none;
   height: 76px;
-  font-family: 'Noto Sans', sans-serif, Spoqa Han Sans JP,
-    -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, 'Helvetica Neue',
-    Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans", sans-serif, Spoqa Han Sans JP, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

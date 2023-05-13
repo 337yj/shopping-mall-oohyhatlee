@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-import { login, logout, onUserStateChange } from '../api/firebase';
+import { createContext, useContext, useEffect, useState } from "react";
+import { login, logout, onUserStateChange } from "../api/firebase";
 
 const AuthContext = createContext();
 
@@ -10,7 +10,7 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     // 콜백함수가 받는 user가 어드민인지 아닌지에 따라 상태변경됨
     onUserStateChange((user) => {
-      console.log(user); // isAdmin: true
+      // console.log(user); // isAdmin: true
       setUser(user);
     });
   }, []);
