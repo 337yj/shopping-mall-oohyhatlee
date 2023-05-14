@@ -6,6 +6,8 @@ import {
   GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
 } from "firebase/auth";
 import { getDatabase, ref, set, get, remove } from "firebase/database";
 
@@ -73,38 +75,6 @@ export const addNewProduct = async (product, imageUrl) => {
   });
 };
 
-// export const addOrUpdateToCart = async (userId, product) => {
-//   const cartRef = ref(database, `carts/${userId}/${product.id}`);
-//   const snapshot = await get(cartRef);
-
-//   if (snapshot.exists()) {
-//     const currentOption = snapshot.val().option;
-//     if (currentOption === product.option) {
-//       // 같은 옵션인 경우 수량을 더해줌
-//       const currentQuantity = snapshot.val().quantity;
-//       const updatedProduct = { ...product, quantity: currentQuantity + 1 };
-//       return set(cartRef, updatedProduct);
-//     } else {
-//       // 다른 옵션인 경우 새로운 상품으로 추가
-//       return addNewProductToCart(userId, product);
-//     }
-//   } else {
-//     // 새로운 상품인 경우 추가
-//     return addNewProductToCart(userId, product);
-//   }
-// };
-export async function addOrUpdateToCart(userId, product) {
-  const uniqueId = `${product.id}_${JSON.stringify(product.option)}`;
-  return set(ref(database, `carts/${userId}/${uniqueId}`), product);
-}
-
-// export const addNewProductToCart = async (userId, product) => {
-//   return set(ref(database, `carts/${userId}/${product.id + product.option}`), {
-//     ...product,
-//     quantity: 1,
-//   });
-// };
-
 // 제품 정보 가져오기
 export const getProducts = async () => {
   return get(ref(database, "products")).then((snapshot) => {
@@ -132,36 +102,9 @@ export const getCart = async (userId) => {
 
 // 장바구니 추가/ 업뎃
 // 제품아이디, 가격, 추가수량...
-// export const addOrUpdateToCart = async (userId, product) => {
-//   return set(ref(database, `carts/${userId}/${product.id}`), product);
-// };
-// export const addOrUpdateToCart = async (userId, product) => {
-//   const cartRef = ref(database, `carts/${userId}/${product.id}`);
-
-//   const snapshot = await get(cartRef);
-
-//   if (snapshot.exists()) {
-//     // 기존 상품이 이미 존재하는 경우 수량을 더해줌
-//     const currentOption = snapshot.val().option;
-//     if (currentOption === product.option) {
-//       // 같은 옵션인 경우 수량을 더해줌
-//       const currentQuantity = snapshot.val().quantity;
-//       return set(cartRef, {
-//         ...product,
-//         quantity: currentQuantity + 1,
-//       });
-//     } else {
-//       // 다른 옵션인 경우 새로운 상품으로 인식하여 추가
-//       return set(
-//         ref(database, `carts/${userId}/${product.id + product.option}`),
-//         product
-//       );
-//     }
-//   } else {
-//     // 새로운 상품인 경우 추가
-//     return set(cartRef, product);
-//   }
-// };
+export const addOrUpdateToCart = async (userId, product) => {
+  return set(ref(database, `carts/${userId}/${product.id}`), product);
+};
 
 // 장바구니 삭제
 export const removeFromCart = async (userId, productId) => {

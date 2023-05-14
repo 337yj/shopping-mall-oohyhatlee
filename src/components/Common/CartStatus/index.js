@@ -6,15 +6,17 @@ import styles from "./cartStatus.module.scss";
 import useCart from "../../../hooks/useCart";
 
 const CartStatus = () => {
-  // getCart에 userId 전달해줘야하니
-  // const { uid } = useAuthContext();
-  // const { data: products } = useQuery(["carts"], () => getCart(uid));
+  const { user, login, logout } = useAuthContext();
   const {
     cartQuery: { data: products },
   } = useCart();
+
   return (
     <div className={styles.wrapper}>
-      CART {products && <p className={styles.cartStatus}>{products.length}</p>}
+      CART
+      {user && (
+        <p className={styles.cartStatus}>{products ? products.length : 0}</p>
+      )}
     </div>
   );
 };

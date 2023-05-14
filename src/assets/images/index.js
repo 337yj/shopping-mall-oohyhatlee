@@ -1,2 +1,2 @@
-export { default as logo } from './logo.png';
-export { default as mainImg } from './mainImg.jpg';
+export { default as logo } from "./logo.svg";
+export { default as mainImg } from "./mainImg.jpg";

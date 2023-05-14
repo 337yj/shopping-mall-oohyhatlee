@@ -1,0 +1,43 @@
+@font-face {
+	font-family: "Cinzel";
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	src: url("./fonts/Cinzel-Regular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Cinzel";
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+	src: url("./fonts/Cinzel-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "CormotantSC";
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+	src: url("./fonts/CormorantSC-Regular.woff") format("woff");
+	// font-family: "Cormorant SC";
+	// font-style: normal;
+	// font-weight: 600;
+	// font-display: swap;
+	// src: url(https://fonts.gstatic.com/s/cormorantsc/v18/0ybmGD4kxqXBmOVLG30OGwsmdBQk_hfzwDM.woff2) format("woff2");
+}
+
+@font-face {
+	font-family: "CormotantSC";
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	src: url("./fonts/CormorantSC-SemiBold.woff") format("woff");
+}
+
+@font-face {
+	font-family: "MapoFlowerIsland";
+	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}

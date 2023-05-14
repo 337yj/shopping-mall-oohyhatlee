@@ -25,6 +25,7 @@ const MyCart = () => {
       (prev, current) => prev + parseInt(current.price) * current.quantity,
       0
     );
+
   return (
     <section>
       <p>MyCart</p>

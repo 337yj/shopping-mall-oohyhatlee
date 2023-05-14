@@ -16,7 +16,7 @@ import {
 
 const router = (
   <Route path="/" element={<Layout />}>
-    <Route path="/" element={<Home />} />
+    <Route index element={<Home />} />
     <Route path="products" element={<AllProducts />} />
     <Route path="products/:id" element={<ProductDetail />} />
     {/* <Route path="new" element={<ProtectedRoute requireAdmin/>}>
