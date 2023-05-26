@@ -1,0 +1,42 @@
+@use "../../styles/constants/" as c;
+@use "../../styles/mixins/" as m;
+
+footer {
+  @include m.flex(space-between);
+  position: relative;
+  width: 100vw;
+  height: 120px;
+  padding: 10px 40px 0;
+  margin-top: -120px;
+  background-color: transparent;
+  z-index: 9999;
+
+  .leftSide {
+    @include m.flex(row, flex-start);
+    width: 100%;
+    text-align: left;
+  }
+
+  .rightSide {
+    @include m.flex(row, flex-end);
+    width: 100%;
+    text-align: right;
+
+    > li:last-child {
+      font-family: "Junge", serif;
+      font-style: italic;
+      cursor: auto;
+    }
+  }
+
+  .leftSide,
+  .rightSide {
+    > li {
+      margin: 0 20px;
+      font-size: 0.9vw;
+      letter-spacing: 0.4px;
+      color: c.$C_WHITE;
+      cursor: pointer;
+    }
+  }
+}

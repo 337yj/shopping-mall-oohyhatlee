@@ -6,65 +6,76 @@
   top: 0;
   left: 0;
   width: 100vw;
-  background-color: transparent;
+  // height: 70px;
   z-index: 9999;
-  transition: background-color 0.5s ease;
+  transition: background-color 0.3s ease;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.15));
 
-  &.scrolled {
-    background-color: #ffffff;
-  }
-
-  .header {
+  > ul {
     width: 100vw;
+    padding: 36px 40px 0;
 
-    > ul {
+    .header {
       @include m.flex(space-between);
-      width: 100vw;
-      padding: 8px 30px;
-
-      .logo {
-        font-size: 28px;
-        margin-left: 68px;
-      }
-
-      > li {
-        @include m.flex();
-        width: 100%;
-        height: 40px;
-        font-size: 14px;
-        cursor: pointer;
-        // gap: 16px;
-      }
+      width: 100%;
 
       .leftSide {
-        @include m.flex(space-between);
-        > li {
-          padding: 0 12px;
+        @include m.flex(row, flex-start);
+        text-align: left;
+      }
+
+      .rightSide {
+        @include m.flex(row, flex-end);
+        text-align: right;
+        vertical-align: middle;
+        .login,
+        .logout {
+          margin-top: 3px;
+        }
+        .logo {
+          // margin-right: 30px;
+          font-family: "Cormorant SC";
+          font-size: 1.5vw;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          color: c.$C_DARKBROWN;
+          &.scrolled {
+            opacity: 1;
+          }
         }
       }
+
+      .leftSide,
       .rightSide {
-        @include m.flex(space-between);
+        width: 100%;
+
         > li {
-          padding: 0 12px;
+          letter-spacing: 0.4px;
+          margin: 0 20px;
+          font-size: 0.9vw;
+          color: c.$C_WHITE;
+          cursor: pointer;
         }
       }
     }
 
-    @media screen and (max-width: 768px) {
-      > ul {
+    @media (max-width: 768px) {
+      .mobileHeader {
         @include m.flex(space-between);
-        width: 100%;
-        padding: 0;
 
-        .logo {
+        .MobileLogo {
+          width: 100%;
+          text-align: right;
+          font-family: "Cormorant SC";
           font-size: 20px;
-          margin-left: 0;
         }
 
         > li {
-          width: 100%;
-          font-size: 14px;
-          margin: 0;
+          @include m.flex();
+
+          font-size: 16px;
+          color: c.$C_WHITE;
+          cursor: pointer;
         }
       }
     }

@@ -1,16 +1,11 @@
 @use "../styles/constants" as c;
-// @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap");
-
-// @import url("https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;600&display=swap");
-
-// @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap");
-
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap");
 
 *,
 *:after,
 *:before {
-  font-family: "Cormorant SC", serif, sans-serif;
+  font-family: "Didact Gothic", serif, sans-serif;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -19,27 +14,19 @@
 html,
 body {
   font-size: 16px;
-
-  // height: 100%;
-  // margin: 0 auto;
-  overflow: hidden;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 
 #root {
   width: 100%;
-  // max-width: 1536px;
   margin: 0 auto;
-  // display: flex;
-  // flex-direction: column;
-  // justify-items: center;
-  // align-items: center;
 }
 
 body,
 textarea,
 button {
-  font-family: "Cormorant SC", serif, sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, "Helvetica Neue",
+  font-family: "Didact Gothic", serif, sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, "Helvetica Neue",
     Helvetica, Arial, sans-serif;
   padding: 0;
   margin: 0;
@@ -61,7 +48,7 @@ input:-webkit-autofill:active {
 a {
   text-decoration: none;
   outline: none;
-  font-family: "Cormorant SC", serif, sans-serif;
+  font-family: "Didact Gothic", serif, sans-serif;
 
   &:hover,
   &:active {
@@ -85,12 +72,12 @@ ol {
 }
 
 pre {
-  font-family: "Cormorant SC", serif, sans-serif;
+  font-family: "Didact Gothic", serif, sans-serif;
 }
 
 textarea {
   resize: none;
   height: 76px;
-  font-family: "Cormorant SC", serif, sans-serif, Spoqa Han Sans JP, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Didact Gothic", serif, sans-serif, Spoqa Han Sans JP, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

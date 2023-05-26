@@ -16,13 +16,14 @@ const ProductCard = ({
 
   return (
     <li onClick={onClick(`products/${id}`)} className={styles.productCardWrap}>
-      <img src={image} alt={title} className={styles.productImg} />
-      {/* 메타데이터 정보 주기 */}
-      <div>
-        <h3>{title}</h3>
-        <p>{`₩${price}`}</p>
+      <div className={styles.productImgWrap}>
+        <img src={image} alt={title} className={styles.productImg} />
       </div>
-      <p>{category}</p>
+      <div className={styles.productInfo}>
+        <h3>{title}</h3>
+        <p>{`₩ ${price.toLocaleString()}`}</p>
+      </div>
+      {/* <p>{category}</p> */}
     </li>
   );
 };

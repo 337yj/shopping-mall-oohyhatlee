@@ -1,9 +1,39 @@
+@use "../../../../styles/constants/" as c;
+@use "../../../../styles/mixins/" as m;
+
 .productCardWrap {
+  width: 100%;
+  height: 60vh;
+  margin-bottom: 100px;
+  color: c.$C_DARKBROWN;
   cursor: pointer;
-  // &:hover {
-  //   scale: (1.2);
-  // }
-}
-.productImg {
-  width: 400px;
+
+  .productImgWrap {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 16px;
+    overflow: hidden;
+
+    .productImg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+      &:hover {
+        transform: scale(1.03);
+      }
+      &:focus {
+        transform: scale(1);
+      }
+    }
+  }
+
+  .productInfo {
+    @include m.flex(column, flex-start, flex-start);
+    font-family: "Cormorant SC";
+    h3 {
+      padding-bottom: 4px;
+      font-size: 18px;
+    }
+  }
 }

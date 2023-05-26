@@ -1,18 +1,16 @@
-.wrapper {
-  position: relative;
+@use "../../../styles/constants/" as c;
+@use "../../../styles/mixins/" as m;
 
-  .cartStatus {
-    position: absolute;
-    top: -2px;
-    right: -12px;
-    width: 12px;
-    height: 12px;
-
-    background-color: rgb(59, 64, 68);
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    font-size: 10px;
-    border-radius: 50%;
-  }
+.cartStatus {
+  @include m.flex();
+  width: 22px;
+  height: 22px;
+  border: 1px solid c.$C_WHITE;
+  border-radius: 50%;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.6;
 }

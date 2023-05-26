@@ -1,3 +1,31 @@
-// .productsWrap {
+@use "../../../styles/constants/" as c;
+@use "../../../styles/mixins/" as m;
 
-// }
+article {
+  width: 100vw;
+  height: 100vh;
+  padding: 0 59px;
+
+  .shopHeader {
+    @include m.flex();
+    margin-top: 9vw;
+    margin-bottom: 30px;
+    font-size: 1vw;
+    color: c.$C_DARKBROWN;
+
+    h2 {
+      flex: 1 1 auto;
+    }
+    a {
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+  .productsWrap {
+    @include m.flex();
+    gap: 16px;
+    margin-bottom: 100px;
+  }
+}

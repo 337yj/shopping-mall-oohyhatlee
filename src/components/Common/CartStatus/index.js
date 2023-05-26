@@ -11,14 +11,7 @@ const CartStatus = () => {
     cartQuery: { data: products },
   } = useCart();
 
-  return (
-    <div className={styles.wrapper}>
-      CART
-      {user && (
-        <p className={styles.cartStatus}>{products ? products.length : 0}</p>
-      )}
-    </div>
-  );
+  return <p className={styles.cartStatus}>{products ? products.length : 0}</p>;
 };
 
 export default CartStatus;
