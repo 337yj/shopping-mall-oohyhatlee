@@ -21,16 +21,8 @@ const Header = () => {
     };
   };
 
-  const scrollToSection2 = () => {
-    scroller.scrollTo("landing_section2", {
-      duration: 1000,
-      delay: 0,
-      smooth: "easeInOutQuart",
-    });
-  };
-
-  const scrollToSection3 = () => {
-    scroller.scrollTo("landing_section3", {
+  const scrollToSection = (section) => {
+    scroller.scrollTo(section, {
       duration: 1000,
       delay: 0,
       smooth: "easeInOutQuart",
@@ -50,8 +42,10 @@ const Header = () => {
       setIsMobile(document.documentElement.clientWidth <= 768);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // 초기 렌더링 시에 handleResize 호출하여 isMobile 상태 업데이트
+    handleResize();
 
+    window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -77,8 +71,10 @@ const Header = () => {
           <div className={styles.header}>
             <div className={styles.leftSide}>
               <li onClick={onClick("/products")}>Shop the Collection</li>
-              <li onClick={scrollToSection3}>About</li>
-              <li onClick={scrollToSection2}>Inspirational</li>
+              <li onClick={() => scrollToSection("landing_section3")}>About</li>
+              <li onClick={() => scrollToSection("landing_section2")}>
+                Inspirational
+              </li>
             </div>
 
             <div className={styles.rightSide}>

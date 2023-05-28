@@ -5,37 +5,37 @@
   @include m.flex();
   width: 100%;
   height: 100vh;
-  background-color: c.$C_BEIGEPINK;
 
   img {
-    width: 30vw;
-    height: 70vh;
+    width: 34%;
+    height: 70%;
     object-fit: cover;
   }
+
   .InfoWrap {
     @include m.flex(column);
     border: 1px solid c.$C_DARKBROWN;
-    width: 30vw;
-    min-width: 20vw;
-    height: 70vh;
-    padding: 0 5vw;
+    width: 34%;
+    height: 70%;
+    padding: 5vw;
     color: c.$C_DARKBROWN;
 
     h2 {
-      margin-bottom: 10px;
-      font-size: 38px;
+      margin-bottom: 0.7vw;
+      font-size: 1.8vw;
       font-family: "Junge", serif;
       // width: 100%;
       flex-shrink: 0;
     }
     .summaryInfo {
-      margin-bottom: 45px;
+      margin-bottom: 2.8vh;
       font-family: "Junge", serif;
       font-style: italic;
+      font-size: 0.8vw;
     }
 
     .description {
-      padding: 45px 0;
+      padding: 2.8vh 0;
       text-align: center;
       line-height: 1.4;
       border-top: 1px solid c.$C_DARKBROWN;
@@ -49,15 +49,15 @@
       flex-shrink: 0;
       .optionWrap {
         label {
-          font-size: 18px;
+          font-size: 1vw;
           flex-shrink: 0;
-          // font-weight: bold;
+          font-family: "Junge", serif;
         }
       }
       .price {
         flex-shrink: 0;
         // margin-bottom: 45px;
-        font-size: 22px;
+        font-size: 1vw;
         // font-weight: bold;
         font-family: "Junge", serif;
       }
@@ -65,9 +65,10 @@
 
     .customBtn {
       width: 100%;
-      height: 60px;
+      height: 5vh;
       flex-shrink: 0;
       font-weight: bold;
+
       background: c.$C_DARKBROWN;
       color: c.$C_BEIGEPINK;
       cursor: pointer;
@@ -83,6 +84,97 @@
       background: #72635f;
       box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, 0.6), -4px -4px 5px 0px rgba(255, 255, 255, 0.6),
         7px 7px 20px 0px rgba(0, 0, 0, 0.3), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  @media (max-width: 1023px) {
+    @include m.flex(column);
+    width: 100%;
+    height: 100%;
+
+    overflow-y: scroll;
+    margin: 90px 0;
+    img {
+      width: 70%;
+      height: 70%;
+      max-height: 100%;
+      object-fit: cover;
+    }
+    .InfoWrap {
+      @include m.flex(column);
+      border: 1px solid c.$C_DARKBROWN;
+      width: 70%;
+      min-width: 20vw;
+      height: 100%;
+      // max-height: 100%;
+      padding: 5vw 5vw;
+      color: c.$C_DARKBROWN;
+
+      h2 {
+        margin-bottom: 2vw;
+        font-size: 5vw;
+        font-family: "Junge", serif;
+        // width: 100%;
+        flex-shrink: 0;
+      }
+      .summaryInfo {
+        margin-bottom: 2.8vw;
+        font-family: "Junge", serif;
+        font-style: italic;
+        font-size: 2.8vw;
+      }
+
+      .description {
+        padding: 2.8vw 0;
+        text-align: center;
+        line-height: 1.4;
+        border-top: 1px solid c.$C_DARKBROWN;
+        border-bottom: 1px solid c.$C_DARKBROWN;
+      }
+
+      .mainInfo {
+        @include m.flex(row, space-between);
+        width: 100%;
+        padding: 10% 15%;
+        flex-shrink: 0;
+        .optionWrap {
+          label {
+            font-size: 3vw;
+            flex-shrink: 0;
+            // font-weight: bold;
+          }
+        }
+        .price {
+          flex-shrink: 0;
+          // margin-bottom: 45px;
+          font-size: 3vw;
+          // font-weight: bold;
+          font-family: "Junge", serif;
+        }
+      }
+
+      .customBtn {
+        width: 100%;
+        height: 6vh;
+        flex-shrink: 0;
+        font-weight: bold;
+        // font-size: 2vw;
+        background: c.$C_DARKBROWN;
+        color: c.$C_BEIGEPINK;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        letter-spacing: 2.5px;
+      }
+
+      .btn1 {
+        transition: all 0.3s ease;
+      }
+
+      .btn1:hover {
+        background: #72635f;
+        box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, 0.6), -4px -4px 5px 0px rgba(255, 255, 255, 0.6),
+          7px 7px 20px 0px rgba(0, 0, 0, 0.3), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
+      }
     }
   }
 }

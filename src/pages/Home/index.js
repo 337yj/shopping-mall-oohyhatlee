@@ -10,8 +10,6 @@ import { useScrollFadeIn } from "../../hooks/useScrollFadeIn";
 import { Element } from "react-scroll";
 
 const Home = () => {
-  // const dispatch = useDispatch();
-  // const history = useHistory();
   const [scrollPosition, setScrollPosition] = useState(0);
   const animation1 = useScrollFadeIn("boo", 2, 0.2);
   const animation2 = useScrollFadeIn("right", 2, 0);
@@ -25,10 +23,10 @@ const Home = () => {
       setScrollPosition(window.scrollY);
     };
 
-    window.addEventListener("scroll", handleScroll); // 스크롤 이벤트 추가
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll); // 컴포넌트 언마운트 시 이벤트 제거
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 

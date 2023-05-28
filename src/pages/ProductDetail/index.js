@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { addOrUpdateToCart } from "../../api/firebase";
+import { Button } from "../../components/Common";
 import { useAuthContext } from "../../context/AuthContext";
 import useCart from "../../hooks/useCart";
 import styles from "./productDetail.module.scss";
@@ -64,12 +65,13 @@ const ProductDetail = () => {
         </div>
         {success && <p>{success}</p>}
 
-        <button
+        {/* <button
           className={`${styles.customBtn} ${styles.btn1}`}
           onClick={onClick}
         >
           ADD &nbsp; TO &nbsp;CART
-        </button>
+        </button> */}
+        <Button text={`ADD  TO CART`} />
       </div>
     </section>
   );

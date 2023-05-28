@@ -1,0 +1,25 @@
+@use "../../../styles/constants/" as c;
+@use "../../../styles/mixins/" as m;
+
+.customBtn {
+  width: 100%;
+  height: 6vh;
+  flex-shrink: 0;
+  font-weight: bold;
+  // font-size: 2vw;
+  background: c.$C_DARKBROWN;
+  color: c.$C_BEIGEPINK;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 2.5px;
+}
+
+.btn1 {
+  transition: all 0.3s ease;
+}
+
+.btn1:hover {
+  background: #72635f;
+  box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, 0.6), -4px -4px 5px 0px rgba(255, 255, 255, 0.6),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.3), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
+}

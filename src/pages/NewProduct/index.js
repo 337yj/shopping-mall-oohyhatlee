@@ -55,7 +55,7 @@ const NewProduct = () => {
                 setSuccess(null);
               }, 4000);
             },
-          }
+          },
         );
         // console.log(url);
         // Firebase에 새로운 제품을 추가함
@@ -131,10 +131,18 @@ const NewProduct = () => {
           required
           onChange={onChange}
         />
+        <input
+          type="text"
+          name="day"
+          value={new Date().toISOString() ?? ""}
+          placeholder="날짜"
+          required
+          onChange={onChange}
+        />
         <button className={styles.btn} disabled={isUploading}>
           {isUploading ? "Uploading..." : "Submit"}
         </button>
-        <Button text={"ㅋㄴ야러"} onClick />
+        <Button text={"UPLOAD"} onClick />
       </form>
     </main>
   );
