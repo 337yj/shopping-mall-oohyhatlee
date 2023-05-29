@@ -71,79 +71,81 @@ const NewProduct = () => {
   };
 
   return (
-    <main className={styles.container}>
+    <main className={styles.wrapper}>
       <h2>New Product Upload</h2>
       {success && <p className={styles.uploadSuccess}>Upload {success}</p>}
-      {file && (
-        <img
-          className={styles.uploadImage}
-          src={URL.createObjectURL(file)}
-          alt="local file"
-        />
-      )}
-      <form className={styles.uploadForm} onSubmit={onSubmit}>
-        {/* accept='image/*' 이미지 타입에 확장자는 상관없음 */}
-        <input
-          type="file"
-          accept="image/*"
-          name="file"
-          required
-          onChange={onChange}
-        />
-        {/* product에 title이 없다면 ''빈문자 반환 */}
-        <input
-          type="text"
-          name="title"
-          value={product.title ?? ""}
-          placeholder="제품명"
-          required
-          onChange={onChange}
-        />
-        <input
-          type="number"
-          name="price"
-          value={product.price ?? ""}
-          placeholder="가격"
-          required
-          onChange={onChange}
-        />
-        <input
-          type="text"
-          name="category"
-          value={product.category ?? ""}
-          placeholder="카테고리"
-          required
-          onChange={onChange}
-        />
-        <input
-          type="text"
-          name="description"
-          value={product.description ?? ""}
-          placeholder="제품 설명"
-          required
-          onChange={onChange}
-        />
-        <input
-          type="text"
-          name="options"
-          value={product.options ?? ""}
-          placeholder="옵션들(콤마(,)로 구분)"
-          required
-          onChange={onChange}
-        />
-        <input
-          type="text"
-          name="day"
-          value={new Date().toISOString() ?? ""}
-          placeholder="날짜"
-          required
-          onChange={onChange}
-        />
-        <button className={styles.btn} disabled={isUploading}>
-          {isUploading ? "Uploading..." : "Submit"}
-        </button>
-        <Button text={"UPLOAD"} onClick />
-      </form>
+      <section className={styles.uploadWrap}>
+        <figure>
+          {file && (
+            <img
+              className={styles.uploadImage}
+              src={URL.createObjectURL(file)}
+              alt="local file"
+            />
+          )}
+        </figure>
+        <form className={styles.uploadForm} onSubmit={onSubmit}>
+          <label htmlFor="file">
+            <div className={styles.uploadBtn}>Choose File</div>
+          </label>
+          {/* accept='image/*' 이미지 타입에 확장자는 상관없음 */}
+          <input
+            type="file"
+            accept="image/*"
+            name="file"
+            id="file"
+            required
+            onChange={onChange}
+            className={styles.fileInput}
+          />
+          {/* product에 title이 없다면 ''빈문자 반환 */}
+          <input
+            type="text"
+            name="title"
+            value={product.title ?? ""}
+            placeholder="제품명"
+            required
+            onChange={onChange}
+          />
+          <input
+            type="number"
+            name="price"
+            value={product.price ?? ""}
+            placeholder="가격"
+            required
+            onChange={onChange}
+          />
+          <input
+            type="text"
+            name="category"
+            value={product.category ?? ""}
+            placeholder="카테고리"
+            required
+            onChange={onChange}
+          />
+          <input
+            type="text"
+            name="description"
+            value={product.description ?? ""}
+            placeholder="제품 설명"
+            required
+            onChange={onChange}
+          />
+          <input
+            type="text"
+            name="options"
+            value={product.options ?? ""}
+            placeholder="옵션들(콤마(,)로 구분)"
+            required
+            onChange={onChange}
+          />
+
+          <Button
+            text={isUploading ? "UPLOADING..." : "UPLOAD"}
+            disabled={isUploading}
+          />
+        </form>
+      </section>
     </main>
   );
 };

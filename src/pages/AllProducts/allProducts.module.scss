@@ -3,14 +3,13 @@
 
 article {
   height: 100%;
-  overflow-y: scroll;
   margin: 150px 0;
+  overflow-y: scroll;
 
   .shopHeader {
     @include m.flex();
     margin-bottom: 50px;
     font-size: 1.3vw;
-    color: c.$C_DARKBROWN;
     font-family: "Junge", serif;
 
     a {
@@ -36,7 +35,6 @@ article {
     .shopHeader {
       @include m.flex();
       font-size: 2vw;
-      color: c.$C_DARKBROWN;
       font-family: "Junge", serif;
 
       a {

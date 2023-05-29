@@ -3,7 +3,7 @@
 
 article {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   padding: 0 59px;
 
   .shopHeader {
@@ -26,6 +26,6 @@ article {
   .productsWrap {
     @include m.flex();
     gap: 16px;
-    margin-bottom: 100px;
+    // margin-bottom: 100px;
   }
 }

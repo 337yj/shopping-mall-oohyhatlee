@@ -1,27 +1,78 @@
+@use "../../styles/constants/" as c;
 @use "../../styles/mixins/" as m;
 
-.container {
-  @include m.flex(center, center, column);
-  width: 100%;
+.wrapper {
+  @include m.flex(column);
+  min-height: 100vh;
+  overflow-y: scroll;
 
-  // margin-top: 48px;
-  margin: 500px auto;
-
-  .uploadImage {
-    width: 450px;
-    height: 600px;
-    object-fit: cover;
+  > h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 1.3vw;
+    font-family: "Junge", serif;
   }
-  .btn {
-    background-color: #000;
-    color: #fff;
-    padding: 6px 10px;
-    border-radius: 10px;
-    font-size: 16px;
+  .uploadWrap {
+    @include m.flex();
+    height: 100%;
+    > figure {
+      width: 26vw;
+      height: 60vh;
+      background-color: lightgray;
+      // background-repeat: no-repeat;
+      // background-position: center;
+      // background-size: cover;
+      position: relative;
+      // overflow: hidden;
+      // margin-right: 30px;
+    }
+    .uploadImage {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      // top: 0;
+      // left: 0;
+      // right: 0;
+      object-fit: cover;
+      overflow: hidden;
+    }
+    .uploadForm {
+      @include m.flex(column);
+      width: 26vw;
+      height: 60vh;
+      padding: 0 2%;
+      border: 1px solid c.$C_DARKBROWN;
+      > label {
+        width: 100%;
+        margin-bottom: 3%;
+        .uploadBtn {
+          letter-spacing: 2.5px;
+          font-size: 18px;
+          text-align: center;
+          // height: 5.4vh;
+          padding: 2vh;
+          border: 1px solid c.$C_DARKBROWN;
+          background: transparent;
+          color: c.$C_DARKBROWN;
+          font-weight: bold;
+          :hover {
+            background-color: c.$C_DARKBROWN;
+          }
+        }
+      }
+      .fileInput {
+        display: none;
+      }
+      > input {
+        width: 100%;
+        background-color: transparent;
+        border: 1px solid c.$C_DARKBROWN;
+        padding: 30px;
+        margin-bottom: 3%;
+      }
+    }
   }
 
-  .uploadForm {
-    @include m.flex(center, center, column);
-    // height: 1000px;
+  @media screen and (max-width: 1023px) {
   }
 }
