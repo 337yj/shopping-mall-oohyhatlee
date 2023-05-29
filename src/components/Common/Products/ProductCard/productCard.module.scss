@@ -3,8 +3,8 @@
 
 .productCardWrap {
   width: 100%;
-  height: 60vh;
-  margin-bottom: 100px;
+  height: 100%;
+  padding-bottom: 30%;
   color: c.$C_DARKBROWN;
   cursor: pointer;
 
@@ -29,14 +29,17 @@
   }
 
   .productInfo {
-    @include m.flex(column, flex-start, flex-start);
     font-family: "Cormorant SC";
+    font-size: 1.1vw;
     h3 {
-      padding-bottom: 4px;
-      font-size: 26px;
+      padding-bottom: 8px;
     }
-    > p {
-      font-size: 22px;
+  }
+
+  @media (max-width: 1023px) {
+    padding-bottom: 10%;
+    .productInfo {
+      font-size: 3vw;
     }
   }
 }

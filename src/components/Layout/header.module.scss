@@ -37,7 +37,7 @@
           font-family: "Cormorant SC";
           font-size: 1.5vw;
           opacity: 0;
-          transition: opacity 0.3s ease;
+          transition: opacity 1s ease;
           color: c.$C_DARKBROWN;
           &.scrolled {
             opacity: 1;
@@ -59,23 +59,38 @@
       }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1023px) {
+      .header {
+        .leftSide,
+        .rightSide {
+          > li {
+            font-size: 1.2vw;
+          }
+        }
+        .rightSide {
+          .logo {
+            font-size: 2.2vw;
+          }
+        }
+      }
+    }
+    @media (max-width: 767px) {
       .mobileHeader {
-        @include m.flex(space-between);
+        @include m.flex(row, flex-start);
 
-        .MobileLogo {
-          width: 100%;
-          text-align: right;
+        .logo {
+          // margin-right: 30px;
+          @include m.flex(row, flex-end);
           font-family: "Cormorant SC";
           font-size: 20px;
-        }
+          opacity: 0;
+          transition: opacity 1s ease;
+          color: c.$C_DARKBROWN;
+          width: 100%;
 
-        > li {
-          @include m.flex();
-
-          font-size: 16px;
-          color: c.$C_WHITE;
-          cursor: pointer;
+          &.scrolled {
+            opacity: 1;
+          }
         }
       }
     }

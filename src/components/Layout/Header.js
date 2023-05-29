@@ -39,7 +39,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(document.documentElement.clientWidth <= 768);
+      setIsMobile(document.documentElement.clientWidth <= 767);
     };
 
     // 초기 렌더링 시에 handleResize 호출하여 isMobile 상태 업데이트
@@ -63,7 +63,12 @@ const Header = () => {
               <Menu />
             </li>
 
-            <li className={styles.MobileLogo} onClick={onClick("/")}>
+            <li
+              className={`${styles.logo} ${
+                location.pathname !== "/" || scrolled ? styles.scrolled : ""
+              }`}
+              onClick={onClick("/")}
+            >
               OohYhatLee
             </li>
           </div>

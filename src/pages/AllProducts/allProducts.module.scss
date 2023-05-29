@@ -1,0 +1,55 @@
+@use "../../styles/constants/" as c;
+@use "../../styles/mixins/" as m;
+
+article {
+  height: 100%;
+  overflow-y: scroll;
+  margin: 150px 0;
+
+  .shopHeader {
+    @include m.flex();
+    margin-bottom: 50px;
+    font-size: 1.3vw;
+    color: c.$C_DARKBROWN;
+    font-family: "Junge", serif;
+
+    a {
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+  .productsWrap {
+    @include m.flex(row, flex-start);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 16px;
+    width: 100%;
+    height: 100%;
+    gap: 16px;
+    // margin-bottom: 100px;
+  }
+
+  @media (max-width: 1023px) {
+    margin: 100px 0;
+    .shopHeader {
+      @include m.flex();
+      font-size: 2vw;
+      color: c.$C_DARKBROWN;
+      font-family: "Junge", serif;
+
+      a {
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+    .productsWrap {
+      @include m.flex(column);
+      gap: 16px;
+      margin-bottom: 100px;
+    }
+  }
+}
