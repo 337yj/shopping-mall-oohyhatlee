@@ -38,7 +38,7 @@
           font-size: 1.5vw;
           opacity: 0;
           transition: opacity 1s ease;
-          color: c.$C_DARKBROWN;
+          color: c.$C_DARKNAVY;
           &.scrolled {
             opacity: 1;
           }
@@ -85,7 +85,7 @@
           font-size: 20px;
           opacity: 0;
           transition: opacity 1s ease;
-          color: c.$C_DARKBROWN;
+          color: c.$C_DARKNAVY;
           width: 100%;
 
           &.scrolled {

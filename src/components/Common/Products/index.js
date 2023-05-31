@@ -21,7 +21,7 @@ const Products = () => {
   };
 
   return (
-    <article>
+    <article className={styles.wrapper}>
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <div className={styles.shopHeader}>

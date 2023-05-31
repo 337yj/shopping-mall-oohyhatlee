@@ -1,8 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import Products from "../../components/Common/Products";
-import logo from "../../assets/images/logo.svg";
-import mainImage from "../../assets/images/mainImg.jpg";
-import mainImage7 from "../../assets/images/mainImg7.jpg";
+import { logo } from "../../assets/index";
+
+import { mainImg2, mainImg3 } from "../../assets/index";
+
+import productImg from "../../assets/images/productImg.jpg";
+import productImg2 from "../../assets/images/productImg2.jpg";
+
 import cx from "classnames";
 import styles from "./home.module.scss";
 import useIntersectionObsever from "../../hooks/observer";
@@ -10,19 +14,24 @@ import { useScrollFadeIn } from "../../hooks/useScrollFadeIn";
 import { Element } from "react-scroll";
 
 const Home = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const animation1 = useScrollFadeIn("boo", 2, 0.2);
-  const animation2 = useScrollFadeIn("right", 2, 0);
-  const animation3 = useScrollFadeIn("left", 2, 0);
+  const [scrolled, setScrolled] = useState(false);
+
+  const animation1 = useScrollFadeIn("right", 1, 0.4);
+  const animation2 = useScrollFadeIn("left", 1, 0.2);
+  const animation3 = useScrollFadeIn("down", 1, 1.2);
   const animation4 = useScrollFadeIn("left", 1, 0.6);
-  const animation5 = useScrollFadeIn("up", 1, 0.3);
-  const animation6 = useScrollFadeIn("boo", 1, 0.3);
+  const animation5 = useScrollFadeIn("place", 1, 1);
+  const animation6 = useScrollFadeIn("place", 1, 0.3);
+
+  const handleScroll = () => {
+    if (window.scrollY > 10) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
-
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -31,55 +40,77 @@ const Home = () => {
   }, []);
 
   return (
-    <div className={styles.wrapper}>
+    <main className={styles.wrapper}>
       <section className={styles.landing_section1}>
-        <img src={mainImage7} className={styles.mainImage6} alt="product" />
-        <img {...animation1} src={logo} className={styles.logo} alt="Logo" />
+        <div className={styles.logoWrap}>
+          <img
+            src={logo}
+            className={`${styles.logo} ${scrolled ? styles.scrolled : ""}`}
+            alt="Logo"
+          />
+        </div>
       </section>
-      <Element name="landing_section2">
-        <section className={styles.landing_section2}>
-          <div></div>
-          <p {...animation2}>
-            {/* In Order To Be <br />
-          Irreplaceable <br />
-          One Must <br />
-          Always Be <br />
-          Different */}
-            <span>Inspirational</span>
-            Fashion is not merely a matter of clothing. Fashion permeates the
-            air, carried by the wind. People feel it, they breathe it in. It
-            exists in the sky and on the streets. It exists everywhere. It stems
-            from thoughts, conventions, and events.
+      <section className={styles.landing_section2}>
+        <img src={mainImg2} className={styles.mainImg2} alt="mainImage" />
+        <div className={styles.descriptionWrap1}>
+          <article {...animation1} className={styles.description}>
+            <p className={styles.text1}>Slow</p>
+          </article>
+          <article {...animation2} className={styles.description}>
+            <p className={styles.text2}>Down</p>
+          </article>
+          <article {...animation3} className={styles.description}>
+            <p className={styles.text3}>Summer</p>
+          </article>
+        </div>
+
+        <div className={styles.descriptionWrap2}>
+          <img src={mainImg3} className={styles.mainImg3} alt="mainImage" />
+
+          <p {...animation4} className={styles.text1}>
+            INSPRTED
+            {/* Sensitive */}
+            {/* <h4>Fashion is instant language.</h4>
+            Fashion is very important. It is life-enhancing, and, like
+            everything that gives pleasure, it is worth doing well.
+            <span> Fashion is language, importance, joy.</span> */}
           </p>
-        </section>
-      </Element>
-      <Element name="landing_section3">
-        <section className={styles.landing_section3}>
-          <img src={mainImage} className={styles.mainImage8} alt="product" />
-          <p {...animation3}>
-            <span>Introduction</span>
-            OohYhatLee is a clothing store that combines vintage designs with
-            innovative styles. Our goal is to provide customers with
-            high-quality, comfortable clothing while prioritizing sustainable
-            values and ethical production methods. <br />
-            <br />
-            We offer unique and trendy items with meticulous attention to detail
-            and luxurious materials. By using renewable resources, eco-friendly
-            materials, and recyclable packaging, we support the sustainable
-            fashion industry. <br />
-            <br />
-            <span>
-              Join us for a special and meaningful fashion experience that
-              combines style and ethics.
-            </span>
+          <p {...animation5} className={styles.text2}>
+            Sensitive
           </p>
-        </section>
-      </Element>
+        </div>
+      </section>
+      <section className={styles.landing_section3}>
+        <p {...animation6}>
+          <span>Inspirational</span>
+          Fashion is not merely a matter of clothing. Fashion permeates the air,
+          carried by the wind. People feel it, they breathe it in. It exists in
+          the sky and on the streets. It exists everywhere. It stems from
+          thoughts, conventions, and events.
+        </p>
+      </section>
+
       <section className={styles.landing_section4}>
-        <Products />
-        <div className={styles.gradient}></div>
+        <p>SENSITIVE</p>
+        <img src={productImg} className={styles.productImg} alt="product" />
+        {/* <img src={productImg2} className={styles.productImg2} alt="product" />
+        <img src={productImg3} className={styles.productImg3} alt="product" /> */}
       </section>
-    </div>
+
+      <section className={styles.landing_section5}>
+        <p>SENSITIVE</p>
+
+        {/* <img src={productImg2} className={styles.productImg2} alt="product" />
+        <img src={productImg3} className={styles.productImg3} alt="product" /> */}
+      </section>
+
+      <section className={styles.landing_section6}>
+        <p>SENSITIVE</p>
+
+        {/* <img src={productImg2} className={styles.productImg2} alt="product" />
+        <img src={productImg3} className={styles.productImg3} alt="product" /> */}
+      </section>
+    </main>
   );
 };
 

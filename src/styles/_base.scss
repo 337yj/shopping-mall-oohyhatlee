@@ -1,6 +1,8 @@
 @use "../styles/constants" as c;
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap");
 
 *,
 *:after,
@@ -16,8 +18,8 @@ body {
   font-size: 16px;
   overflow-x: hidden;
   overflow-y: scroll;
-  background-color: c.$C_BEIGEPINK;
-  color: c.$C_DARKBROWN;
+  background-color: c.$C_BEIGE;
+  color: c.$C_DARKNAVY;
 }
 
 #root {

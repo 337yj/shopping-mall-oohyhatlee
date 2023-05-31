@@ -1,7 +1,7 @@
 @use "../../styles/constants/" as c;
 @use "../../styles/mixins/" as m;
 
-article {
+.wrapper {
   height: 100%;
   margin: 150px 0;
   overflow-y: scroll;

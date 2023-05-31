@@ -11,7 +11,7 @@ const AllProducts = () => {
   } = useProducts();
 
   return (
-    <article>
+    <article className={styles.wrapper}>
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <h2 className={styles.shopHeader}>Shop the Collection</h2>

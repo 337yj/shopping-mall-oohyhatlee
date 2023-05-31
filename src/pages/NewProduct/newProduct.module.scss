@@ -41,7 +41,7 @@
       width: 26vw;
       height: 60vh;
       padding: 0 2%;
-      border: 1px solid c.$C_DARKBROWN;
+      border: 1px solid c.$C_DARKNAVY;
       > label {
         width: 100%;
         margin-bottom: 3%;
@@ -51,12 +51,12 @@
           text-align: center;
           // height: 5.4vh;
           padding: 2vh;
-          border: 1px solid c.$C_DARKBROWN;
+          border: 1px solid c.$C_DARKNAVY;
           background: transparent;
-          color: c.$C_DARKBROWN;
+          color: c.$C_DARKNAVY;
           font-weight: bold;
           :hover {
-            background-color: c.$C_DARKBROWN;
+            background-color: c.$C_DARKNAVY;
           }
         }
       }
@@ -66,7 +66,7 @@
       > input {
         width: 100%;
         background-color: transparent;
-        border: 1px solid c.$C_DARKBROWN;
+        border: 1px solid c.$C_DARKNAVY;
         padding: 30px;
         margin-bottom: 3%;
       }

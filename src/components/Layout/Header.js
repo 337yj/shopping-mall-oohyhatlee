@@ -4,7 +4,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import CartStatus from "../Common/CartStatus";
 import styles from "./header.module.scss";
 import { throttle } from "lodash";
-import menu, { Login, Logout, Menu } from "../../assets";
+import { Login, Logout, Menu } from "../../assets/index";
 import { scroller } from "react-scroll";
 
 const Header = () => {
