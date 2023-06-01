@@ -4,14 +4,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Junge&display=swap");
 
 .wrapper {
+  @include m.flex(column);
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   scroll-behavior: smooth;
   width: 100vw;
   height: 100%;
-  // overflow-y: scroll;
-  @include m.flex(column);
-  // position: relative;
   scroll-padding-top: calc(50vh - 50%);
 
   .landing_section1 {
@@ -47,7 +45,7 @@
     height: 100vh;
     width: 100%;
     @include m.flex();
-
+    z-index: 999;
     > img {
       // position: relative;
       width: 50vw;
@@ -76,7 +74,7 @@
       // z-index: 999;
       position: absolute;
       font-size: 5.4vw;
-      font-weight: bold;
+      // font-weight: bold;
       // font-family: "Junge", serif;
       .description {
         position: relative;
@@ -112,12 +110,15 @@
     }
     .descriptionWrap2 {
       @include m.flex();
-
+      width: 100%;
+      height: 100%;
+      background-color: c.$C_BACKGROUND;
       .mainImg3 {
         position: relative;
         // z-index: 999;
         width: 30vw;
         height: 60vh;
+
         object-fit: cover;
       }
       width: 50%;
@@ -150,7 +151,7 @@
   }
 
   .landing_section3 {
-    background: url("../../assets/images/mainImg4.jpg") no-repeat center 30%;
+    background: url("../../assets/images/mainImg7.jpg") no-repeat fixed center 30%;
     // background: url("../../assets/images/mainImg5.jpg") no-repeat center 70%;
 
     background-size: cover;
@@ -158,61 +159,176 @@
     width: 100%;
     height: 100vh;
     @include m.flex();
-    p {
+    .descriptionWrap {
+      @include m.flex();
       position: absolute;
-      margin: 0 auto;
-      width: 55vw;
-      span {
-        vertical-align: middle;
-        color: c.$C_DARKNAVY;
-        font-size: 1.2vw;
-        font-style: italic;
-        padding-right: 46px;
-      }
+      width: 100%;
+      height: 100vh;
+      // z-index: 9999;
+      .description {
+        // @include m.flex();
+        // position: absolute;
+        position: fixed;
+        // height: 100vh;
+        bottom: 40%;
+        margin: 0 auto;
+        width: 55vw;
+        span {
+          vertical-align: middle;
+          color: c.$C_DARKNAVY;
+          font-size: 1.2vw;
+          font-style: italic;
+          padding-right: 46px;
+        }
+        opacity: 0;
+        transition: opacity 1s ease;
 
-      text-align: center;
-      line-height: 1.8;
-      width: 50vw;
-      font-family: "Junge", serif;
-      font-size: 1.7vw;
-      color: c.$C_WHITE;
+        text-align: center;
+        line-height: 1.8;
+        width: 50vw;
+        font-family: "Cormorant Garamond";
+        font-size: 1.9vw;
+        color: c.$C_WHITE;
+        &.scrolled {
+          opacity: 1;
+          transition: opacity 1s ease;
+        }
+      }
     }
   }
 
   .landing_section4 {
-    background-size: cover;
     position: relative;
     height: 100vh;
     width: 100%;
-    background-color: #dbccb4;
-    > p {
+    z-index: 999;
+    // background-size: cover;
+    // position: relative;
+    // height: 100vh;
+    // width: 100%;
+    background-color: c.$C_BACKGROUND;
+    > svg {
+      position: absolute;
+      top: 10%;
+      left: 33%;
+      width: 16vw;
+      height: 30vh;
+    }
+    > a {
       // writing-mode: vertical-lr;
       // /* 영어는 추가로 사용해야함 */
       // text-orientation: upright;
       position: absolute;
-      top: 10vh;
-      left: 4vw;
-      font-size: 12vw;
-      color: #ffffff6e;
+      bottom: 10%;
+      left: 4%;
+      font-size: 5.4vw;
+      color: c.$C_DARKNAVY;
       font-weight: bold;
       font-family: "Cormorant SC";
+      cursor: pointer;
+      // transition: color 0.2s, transform 0.2s; /* 애니메이션 효과를 위한 transition 추가 */
+
+      &:hover {
+        > svg {
+          transition: transform 0.6s;
+          transform: scale(1.3);
+        }
+      }
+      > svg {
+        transition: transform 0.6s;
+        margin-left: 1vw;
+        width: 10%;
+        margin-bottom: -0.2vh;
+      }
     }
-    .productImg {
-      width: 12vw;
+    .mainImg4 {
       position: absolute;
-      top: 20vw;
+      top: 12%;
+      left: 4%;
+      width: 27vw;
+      height: 50vh;
+      object-fit: cover;
+    }
+    .mainImg5 {
+      position: absolute;
+      bottom: 0;
+      left: 36%;
+      width: 26vw;
+      height: 58vh;
+      object-fit: cover;
+      z-index: 999;
+    }
+    .mainImg6 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 50vw;
+      height: 100%;
+      object-fit: cover;
+      object-position: bottom 30%;
+    }
+    .subDescription {
+      position: absolute;
+      top: 16%;
+      right: 0;
+      transform: rotate(90deg);
+      font-size: 2.6vw;
+
+      font-family: "Cormorant Garamond";
+      color: c.$C_WHITE;
+      font-weight: 500;
+    }
+    .text1 {
+    }
+    .text2 {
+      margin-top: 10%;
+      margin-left: 70%;
     }
   }
 
   .landing_section5 {
+    background: url("../../assets/images/mainImg8.jpg") no-repeat fixed center 50%;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    @include m.flex();
+    .descriptionWrap {
+      @include m.flex();
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: fixed;
+      width: 55vw;
+      .description {
+        span {
+          vertical-align: middle;
+          color: c.$C_DARKNAVY;
+          font-size: 1.2vw;
+          font-style: italic;
+          padding-right: 46px;
+        }
+        opacity: 0;
+        transition: opacity 0.4s ease;
+
+        text-align: center;
+        line-height: 1.8;
+
+        font-family: "Junge", serif;
+        font-size: 1.7vw;
+        color: c.$C_WHITE;
+        &.scrolled {
+          opacity: 1;
+          transition: opacity 2s ease;
+        }
+      }
+    }
   }
-  // .gradient {
-  //   // padding: 0 60px;
-  //   width: 100vw;
-  //   height: 70px;
-  //   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.15));
-  //   z-index: 9999;
-  // }
 
   // // tablet
   // @media screen and (max-width: 1023px) {

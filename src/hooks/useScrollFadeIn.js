@@ -6,7 +6,7 @@ export function useScrollFadeIn(direction = "up", duration = 1, delay = 0) {
   const handleDirection = (name) => {
     switch (name) {
       case "up":
-        return "translate3d(0, -50%, 0)";
+        return "translate3d(0, 50%, 0)";
       case "down":
         return "translate3d(0, -50%, 0)";
       case "left":

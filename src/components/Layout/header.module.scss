@@ -6,10 +6,10 @@
   top: 0;
   left: 0;
   width: 100vw;
-  // height: 70px;
+  height: 100px;
   z-index: 9999;
   transition: background-color 1s ease;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.15));
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2));
 
   > ul {
     width: 100vw;
