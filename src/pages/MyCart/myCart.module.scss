@@ -1,0 +1,18 @@
+@use "../../styles/constants/" as c;
+@use "../../styles/mixins/" as m;
+
+.wrapper {
+  @include m.flex(column, flex-start);
+
+  height: 100vh;
+  margin: 150px 60px;
+
+  overflow-y: scroll;
+
+  .subHeader {
+    // @include m.flex();
+    margin-bottom: 50px;
+    font-size: 1.3vw;
+    font-family: "Junge", serif;
+  }
+}

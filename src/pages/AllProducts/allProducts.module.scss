@@ -6,7 +6,7 @@
   margin: 150px 60px;
   overflow-y: scroll;
 
-  .shopHeader {
+  .subHeader {
     @include m.flex();
     margin-bottom: 50px;
     font-size: 1.3vw;
@@ -30,7 +30,7 @@
   }
 
   @media (max-width: 1023px) {
-    margin: 100px 0;
+    margin: 100px 50px;
     .shopHeader {
       @include m.flex();
       font-size: 2vw;

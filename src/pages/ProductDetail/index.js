@@ -71,7 +71,7 @@ const ProductDetail = () => {
         >
           ADD &nbsp; TO &nbsp;CART
         </button> */}
-        <Button text={`ADD  TO CART`} />
+        <Button text={`ADD  TO CART`} onClick={onClick} />
       </div>
     </section>
   );

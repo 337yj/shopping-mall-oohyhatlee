@@ -50,9 +50,10 @@
         width: 100%;
 
         > li {
-          letter-spacing: 0.4px;
+          letter-spacing: 0.05vw;
           margin: 0 20px;
           font-size: 0.9vw;
+
           color: c.$C_WHITE;
           cursor: pointer;
         }
@@ -64,32 +65,96 @@
         .leftSide,
         .rightSide {
           > li {
-            font-size: 1.2vw;
+            font-size: 1.9vw;
+            flex-shrink: 0;
           }
         }
         .rightSide {
           .logo {
-            font-size: 2.2vw;
+            font-size: 2vw;
           }
         }
       }
     }
-    @media (max-width: 767px) {
-      .mobileHeader {
-        @include m.flex(row, flex-start);
 
+    @media (max-width: 767px) {
+      @include m.flex(row, flex-start);
+
+      position: relative;
+      .mobileHeader {
+        @include m.flex(row, space-between);
+        width: 100vw;
+        .dropdownWrapper {
+          // @include m.flex();
+          // position: relative;
+          // padding: 0 15px;
+          // cursor: pointer;
+          user-select: none;
+          // width: 100vw;
+          // height: 100vh;
+          .icon {
+            z-index: 999;
+            cursor: pointer;
+            width: 9vw;
+          }
+
+          .itemWrapper {
+            @include m.flex(column);
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0;
+            overflow-y: scroll;
+            // top: -50%;
+            // transform: scale(0);
+            // transform-origin: center;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            margin: -76px -40px 0px;
+            &.isOpen {
+              @include m.flex(column);
+              margin: -76px -40px 0px;
+              transform: scale(1.1);
+              background: rgba(0, 0, 0, 0.2);
+              /* for iPhone */
+              -webkit-backdrop-filter: blur(6px);
+              -moz-backdrop-filter: blur(6px);
+              -o-backdrop-filter: blur(6px);
+              backdrop-filter: blur(6px);
+              position: absolute;
+              z-index: -1;
+              // top: -10%;
+              opacity: 1;
+              // transform: scale(1);
+              width: 100vw;
+              height: 100vh;
+            }
+            .item {
+              padding: 3.3vh 0;
+              font-size: 4vw;
+              letter-spacing: 0.05vw;
+              // @include m.flex();
+              color: c.$C_WHITE;
+              &:hover {
+                // background-color: c.$C_DARKBROWN;
+                // font-weight: 500;
+              }
+            }
+          }
+        }
         .logo {
           // margin-right: 30px;
-          @include m.flex(row, flex-end);
+          // @include m.flex(row, flex-end);
           font-family: "Cormorant SC";
-          font-size: 20px;
+          font-size: 5vw;
           opacity: 0;
           transition: opacity 1s ease;
           color: c.$C_DARKNAVY;
-          width: 100%;
-
+          // width: 100%;
+          cursor: pointer;
           &.scrolled {
             opacity: 1;
+            z-index: 999;
           }
         }
       }

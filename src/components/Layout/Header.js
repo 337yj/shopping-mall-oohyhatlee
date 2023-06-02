@@ -1,27 +1,32 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import CartStatus from "../Common/CartStatus";
 import styles from "./header.module.scss";
-import { throttle } from "lodash";
-import { Login, Logout, Menu } from "../../assets/index";
+import { Login, Logout, Menu, IconClose } from "../../assets/index";
 import { scroller } from "react-scroll";
+import { useScrollFadeIn } from "../../hooks/useScrollFadeIn";
 
 const Header = () => {
   const { user, login, logout } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   const onClick = (path) => {
     return () => {
+      setIsOpen(false);
       navigate(path);
     };
   };
 
   const scrollToSection = (section) => {
+    setIsOpen(false);
     scroller.scrollTo(section, {
       duration: 1000,
       delay: 0,
@@ -36,6 +41,31 @@ const Header = () => {
       setScrolled(false);
     }
   };
+
+  const onClickIcon = (event) => {
+    event.stopPropagation(); // 이벤트 전파 방지
+    setIsOpen((prevIsOpen) => !prevIsOpen);
+  };
+
+  useEffect(() => {
+    const onClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    const onPopState = () => {
+      setIsOpen(false);
+    };
+
+    document.addEventListener("mousedown", onClickOutside);
+    window.addEventListener("popstate", onPopState);
+
+    return () => {
+      document.removeEventListener("mousedown", onClickOutside);
+      window.removeEventListener("popstate", onPopState);
+    };
+  }, [dropdownRef]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -59,9 +89,59 @@ const Header = () => {
       <ul>
         {isMobile ? (
           <div className={styles.mobileHeader}>
-            <li className={styles.mobileMenu}>
-              <Menu />
-            </li>
+            <div
+              className={`${styles.dropdownWrapper} ${
+                isOpen ? styles.isOpen : ""
+              }`}
+              ref={dropdownRef}
+            >
+              {isOpen ? (
+                <IconClose onClick={onClickIcon} className={styles.icon} />
+              ) : (
+                <Menu onClick={onClickIcon} className={styles.icon} />
+              )}
+
+              <menu
+                className={`${styles.itemWrapper} ${
+                  isOpen ? styles.isOpen : ""
+                }`}
+              >
+                <li className={styles.item}>Shop the Collection</li>
+                <li
+                  className={styles.item}
+                  onClick={() => scrollToSection("landing_section5")}
+                >
+                  About
+                </li>
+                <li
+                  className={styles.item}
+                  onClick={() => scrollToSection("landing_section3")}
+                >
+                  Inspirational
+                </li>
+                <li onClick={onClick("carts")} className={styles.item}>
+                  Cart
+                </li>
+                {user && user.isAdmin && (
+                  <li
+                    onClick={onClick("/products/new")}
+                    className={styles.item}
+                  >
+                    New
+                  </li>
+                )}
+                {!user && (
+                  <li className={styles.item} onClick={login}>
+                    Login
+                  </li>
+                )}
+                {user && (
+                  <li className={styles.item} onClick={logout}>
+                    Logout
+                  </li>
+                )}
+              </menu>
+            </div>
 
             <li
               className={`${styles.logo} ${
@@ -76,8 +156,8 @@ const Header = () => {
           <div className={styles.header}>
             <div className={styles.leftSide}>
               <li onClick={onClick("/products")}>Shop the Collection</li>
-              <li onClick={() => scrollToSection("landing_section3")}>About</li>
-              <li onClick={() => scrollToSection("landing_section2")}>
+              <li onClick={() => scrollToSection("landing_section5")}>About</li>
+              <li onClick={() => scrollToSection("landing_section3")}>
                 Inspirational
               </li>
             </div>

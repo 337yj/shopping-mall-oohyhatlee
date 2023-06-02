@@ -8,3 +8,4 @@ export { ReactComponent as IconPlus } from "./plus.svg";
 export { ReactComponent as IconDelete } from "./delete.svg";
 export { ReactComponent as IconArrow } from "./arrow.svg";
 export { ReactComponent as CurvedText } from "./curvedText.svg";
+export { ReactComponent as IconClose } from "./close.svg";

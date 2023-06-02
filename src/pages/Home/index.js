@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
-import Products from "../../components/Common/Products";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useScrollFadeIn } from "../../hooks/useScrollFadeIn";
+import { Element } from "react-scroll";
 import { logo, IconArrow, CurvedText } from "../../assets/index";
-
 import {
   mainImg2,
   mainImg3,
@@ -9,16 +10,7 @@ import {
   mainImg5,
   mainImg6,
 } from "../../assets/index";
-
-import productImg from "../../assets/images/productImg.jpg";
-import productImg2 from "../../assets/images/productImg2.jpg";
-
-import cx from "classnames";
 import styles from "./home.module.scss";
-import useIntersectionObsever from "../../hooks/observer";
-import { useScrollFadeIn } from "../../hooks/useScrollFadeIn";
-import { Element } from "react-scroll";
-import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -35,7 +27,6 @@ const Home = () => {
   const animation7 = useScrollFadeIn("down", 1.2, 1.5);
   const animation8 = useScrollFadeIn("left", 1, 0.3);
   const animation9 = useScrollFadeIn("left", 1, 0.3);
-  const animation10 = useScrollFadeIn("up", 1.6, 0.5);
 
   const onClick = (path) => {
     return () => {
@@ -64,8 +55,6 @@ const Home = () => {
 
     if (scrollRatio > 3.5) {
       setScrolled3(true);
-      // } else if (scrollRatio > 2.7) {
-      //   setScrolled3(true);
     } else {
       setScrolled3(false);
     }
@@ -90,6 +79,7 @@ const Home = () => {
           />
         </div>
       </section>
+
       <section className={styles.landing_section2}>
         <img src={mainImg2} className={styles.mainImg2} alt="mainImage" />
         <div className={styles.descriptionWrap1}>
@@ -109,18 +99,13 @@ const Home = () => {
 
           <p {...animation4} className={styles.text1}>
             INSPRTED
-            {/* Sensitive */}
-            {/* <h4>Fashion is instant language.</h4>
-            Fashion is very important. It is life-enhancing, and, like
-            everything that gives pleasure, it is worth doing well.
-            <span> Fashion is language, importance, joy.</span> */}
           </p>
           <p {...animation5} className={styles.text2}>
             Sensitive
           </p>
         </div>
       </section>
-
+      <Element name="landing_section3" className={styles.landingElement1} />
       <section className={styles.landing_section3}>
         <div className={styles.descriptionWrap}>
           <p
@@ -136,7 +121,7 @@ const Home = () => {
           </p>
         </div>
       </section>
-
+      {/* </Element> */}
       <section className={styles.landing_section4}>
         <a {...animation6} onClick={onClick("/products")}>
           Shop The <br />
@@ -158,6 +143,7 @@ const Home = () => {
         </div>
       </section>
 
+      <Element name="landing_section5" />
       <section className={styles.landing_section5}>
         <div className={styles.descriptionWrap}>
           <p

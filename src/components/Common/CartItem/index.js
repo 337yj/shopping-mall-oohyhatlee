@@ -28,13 +28,16 @@ const CartItem = ({
   return (
     <li className={styles.wrapper}>
       <img className={styles.productImg} src={image} alt={title} />
-      <div>
-        <p>{title}</p>
+      <div className={styles.wrapper}>
+        <p className={styles.title}>{title}</p>
         <p>{option}</p>
         <p>₩{price}</p>
-        <IconMinus onClick={onClickMinus} />
-        <span>{quantity}</span>
-        <IconPlus onClick={onClickPlus} />
+        <div>
+          <IconMinus onClick={onClickMinus} />
+          <span>{quantity}</span>
+          <IconPlus onClick={onClickPlus} />
+        </div>
+
         <IconDelete onClick={onClickDelete} />
       </div>
     </li>

@@ -11,10 +11,10 @@ const AllProducts = () => {
   } = useProducts();
 
   return (
-    <article className={styles.wrapper}>
+    <section className={styles.wrapper}>
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      <h2 className={styles.shopHeader}>Shop the Collection</h2>
+      <h2 className={styles.subHeader}>Shop the Collection</h2>
 
       <ul className={styles.productsWrap}>
         {products &&
@@ -22,7 +22,7 @@ const AllProducts = () => {
             <ProductCard key={product.id} product={product} />
           ))}
       </ul>
-    </article>
+    </section>
   );
 };
 

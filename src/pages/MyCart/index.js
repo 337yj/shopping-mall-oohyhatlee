@@ -4,6 +4,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import { getCart } from "../../api/firebase";
 import { CartItem, PriceCard } from "../../components/Common";
 import useCart from "../../hooks/useCart";
+import styles from "./myCart.module.scss";
 
 const SHIPPING = 3000;
 
@@ -23,13 +24,13 @@ const MyCart = () => {
     products &&
     products.reduce(
       (prev, current) => prev + parseInt(current.price) * current.quantity,
-      0
+      0,
     );
 
   return (
-    <section>
-      <p>MyCart</p>
-      {!hasProducts && <p>장바구니에 상품이 없습니다.</p>}
+    <section className={styles.wrapper}>
+      <h2 className={styles.subHeader}>MyCart</h2>
+      {!hasProducts && <p>Your cart is currently empty.</p>}
       {hasProducts && (
         <>
           <ul>
