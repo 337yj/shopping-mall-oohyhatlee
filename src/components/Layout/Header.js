@@ -5,7 +5,6 @@ import CartStatus from "../Common/CartStatus";
 import styles from "./header.module.scss";
 import { Login, Logout, Menu, IconClose } from "../../assets/index";
 import { scroller } from "react-scroll";
-import { useScrollFadeIn } from "../../hooks/useScrollFadeIn";
 
 const Header = () => {
   const { user, login, logout } = useAuthContext();
@@ -27,11 +26,15 @@ const Header = () => {
 
   const scrollToSection = (section) => {
     setIsOpen(false);
-    scroller.scrollTo(section, {
-      duration: 1000,
-      delay: 0,
-      smooth: "easeInOutQuart",
-    });
+    if (location.pathname === "/") {
+      scroller.scrollTo(section, {
+        duration: 1000,
+        delay: 0,
+        smooth: "easeInOutQuart",
+      });
+    } else {
+      navigate("/", { state: { scrollToSection: section } });
+    }
   };
 
   const handleScroll = () => {
@@ -84,6 +87,17 @@ const Header = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (location.state && location.state.scrollToSection) {
+      const section = location.state.scrollToSection;
+      scroller.scrollTo(section, {
+        duration: 1000,
+        delay: 0,
+        smooth: "easeInOutQuart",
+      });
+    }
+  }, [location.state]);
+
   return (
     <header className={styles.headerWrap}>
       <ul>
@@ -106,7 +120,9 @@ const Header = () => {
                   isOpen ? styles.isOpen : ""
                 }`}
               >
-                <li className={styles.item}>Shop the Collection</li>
+                <li className={styles.item} onClick={onClick("/products")}>
+                  Shop the Collection
+                </li>
                 <li
                   className={styles.item}
                   onClick={() => scrollToSection("landing_section5")}

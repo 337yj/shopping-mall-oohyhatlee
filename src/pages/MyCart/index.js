@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useAuthContext } from "../../context/AuthContext";
 import { getCart } from "../../api/firebase";
-import { CartItem, PriceCard } from "../../components/Common";
+import { Button, CartItem, PriceCard } from "../../components/Common";
 import useCart from "../../hooks/useCart";
 import styles from "./myCart.module.scss";
 
@@ -29,7 +29,7 @@ const MyCart = () => {
 
   return (
     <section className={styles.wrapper}>
-      <h2 className={styles.subHeader}>MyCart</h2>
+      <h2 className={styles.subHeader}>My Cart</h2>
       {!hasProducts && <p>Your cart is currently empty.</p>}
       {hasProducts && (
         <>
@@ -39,12 +39,12 @@ const MyCart = () => {
                 <CartItem key={product.id} product={product} />
               ))}
           </ul>
-          <div>
-            <PriceCard text="상품 총액" price={totalPrice} />
-            <PriceCard text="배송액" price={SHIPPING} />
-            <PriceCard text="총가격" price={totalPrice + SHIPPING} />
+          <div className={styles.priceWrap}>
+            <PriceCard text="Total" price={totalPrice} />
+            <PriceCard text="Shipping" price={SHIPPING} />
+            <PriceCard text="	Subtotal" price={totalPrice + SHIPPING} />
           </div>
-          <button>주문하기</button>
+          <Button text={`PLACE ORDER`} />
         </>
       )}
     </section>

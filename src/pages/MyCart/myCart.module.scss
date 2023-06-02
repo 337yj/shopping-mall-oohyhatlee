@@ -5,14 +5,87 @@
   @include m.flex(column, flex-start);
 
   height: 100vh;
-  margin: 150px 60px;
+  padding: 150px 20%;
 
   overflow-y: scroll;
 
   .subHeader {
-    // @include m.flex();
     margin-bottom: 50px;
-    font-size: 1.3vw;
+    font-size: 32px;
     font-family: "Junge", serif;
+  }
+
+  > ul {
+    width: 100%;
+  }
+  .priceWrap {
+    @include m.flex(column, flex-end);
+    text-align: end;
+    width: 100%;
+    padding: 5% 0;
+    > div {
+      @include m.flex(row, flex-end);
+      width: 100%;
+      font-size: 24px;
+
+      margin-bottom: 2%;
+      > p:first-child {
+        // width: 50vw;
+        // margin-right: 6vw;
+        text-align: right;
+      }
+      > p:last-child {
+        width: 15vw;
+        // margin-right: 6vw;
+        // text-align: right;
+      }
+    }
+  }
+
+  @media (max-width: 1023px) {
+    padding: 150px 10%;
+    .subHeader {
+      font-size: 3vw;
+    }
+    .priceWrap {
+      padding: 10% 0;
+      > div {
+        font-size: 24px;
+
+        > p:last-child {
+          width: 20vw;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    // padding: 150px 10%;
+    .subHeader {
+      font-size: 3.8vw;
+    }
+    .priceWrap {
+      padding: 10% 0;
+      > div {
+        font-size: 24px;
+
+        > p:last-child {
+          width: 26vw;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .subHeader {
+      font-size: 4.3vw;
+    }
+    .priceWrap {
+      > div {
+        > p:last-child {
+          width: 34vw;
+        }
+      }
+    }
   }
 }

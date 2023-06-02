@@ -26,7 +26,6 @@ const Products = () => {
       {error && <p>{error}</p>}
       <div className={styles.shopHeader}>
         <h2>Shop All</h2>
-        <a onClick={onClick("/products")}>View All</a>
       </div>
 
       <ul className={styles.productsWrap}>

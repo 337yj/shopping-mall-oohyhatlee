@@ -4,18 +4,139 @@
 .wrapper {
   // @include m.flex(row, space-between, center);
   @include m.flex();
-  width: 80vw;
-  margin-bottom: 4%;
+  // width: 100%;
+  // margin-bottom: 2%;
   // gap: 5%;
+  font-size: 24px;
   .productImg {
-    width: 20vw;
-    height: 20vw;
+    width: 17vw;
+    height: 15vw;
     // padding-bottom: 100px;
     object-fit: cover;
     // overflow: hidden;
   }
 
-  .title {
-    font-size: 1.6vw;
+  .InfoWrap {
+    @include m.flex(row, space-around, center);
+    width: 100%;
+
+    border: 1px solid c.$C_DARKNAVY;
+    height: 15vw;
+
+    > p:first-child {
+      width: 14vw;
+      text-align: center;
+    }
+
+    .quantityWrap {
+      @include m.flex(row, space-between, center);
+      width: 6vw;
+
+      > svg {
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 1.6vw;
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+    > svg {
+      width: 1.6vw;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        transform: scale(1.2);
+        filter: drop-shadow(0px 0px 4px #34334398);
+      }
+    }
+  }
+
+  @media (max-width: 1023px) {
+    @include m.flex(column);
+    font-size: 2.6vw;
+
+    .productImg {
+      width: 100%;
+      height: 50vw;
+      // padding-bottom: 100px;
+      object-fit: cover;
+      // overflow: hidden;
+    }
+
+    .InfoWrap {
+      > p:first-child {
+        width: 18vw;
+        text-align: left;
+      }
+
+      .quantityWrap {
+        width: 12vw;
+
+        > svg {
+          width: 2.8vw;
+        }
+      }
+      > svg {
+        width: 2.6vw;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    font-size: 3.7vw;
+
+    .InfoWrap {
+      // @include m.flex(column);
+      // padding: 30px;
+      > p:first-child {
+        width: 20vw;
+        // text-align: center;
+      }
+
+      .quantityWrap {
+        width: 14vw;
+
+        > svg {
+          width: 3vw;
+        }
+      }
+      > svg {
+        width: 2.8vw;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 5vw;
+
+    .InfoWrap {
+      @include m.flex(column);
+      position: relative;
+      height: 100%;
+      padding: 14px 0;
+      > p {
+        padding-bottom: 16px;
+      }
+      > p:first-child {
+        width: 100%;
+        text-align: center;
+      }
+
+      .quantityWrap {
+        width: 14vw;
+
+        > svg {
+          width: 4vw;
+        }
+      }
+      > svg {
+        position: absolute;
+        top: 0;
+        margin: 3%;
+        right: 4%;
+        width: 4vw;
+      }
+    }
   }
 }

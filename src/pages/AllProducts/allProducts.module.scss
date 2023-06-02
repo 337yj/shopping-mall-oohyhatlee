@@ -9,15 +9,8 @@
   .subHeader {
     @include m.flex();
     margin-bottom: 50px;
-    font-size: 1.3vw;
+    font-size: 32px;
     font-family: "Junge", serif;
-
-    a {
-      &:hover {
-        cursor: pointer;
-        text-decoration: underline;
-      }
-    }
   }
   .productsWrap {
     display: grid;
@@ -26,27 +19,28 @@
     width: 100%;
     height: 100%;
     gap: 30px;
-    // margin-bottom: 100px;
   }
 
   @media (max-width: 1023px) {
-    margin: 100px 50px;
-    .shopHeader {
-      @include m.flex();
-      font-size: 2vw;
-      font-family: "Junge", serif;
-
-      a {
-        &:hover {
-          cursor: pointer;
-          text-decoration: underline;
-        }
-      }
+    .subHeader {
+      font-size: 3vw;
     }
     .productsWrap {
       @include m.flex(column);
       gap: 16px;
       margin-bottom: 100px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .subHeader {
+      font-size: 3.8vw;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .subHeader {
+      font-size: 4.3vw;
     }
   }
 }

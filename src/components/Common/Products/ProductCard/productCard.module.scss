@@ -43,4 +43,16 @@
       font-size: 3vw;
     }
   }
+
+  @media (max-width: 767px) {
+    .productInfo {
+      font-size: 3.8vw;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .productInfo {
+      font-size: 4.3vw;
+    }
+  }
 }

@@ -65,13 +65,13 @@
         .leftSide,
         .rightSide {
           > li {
-            font-size: 1.9vw;
+            font-size: 2vw;
             flex-shrink: 0;
           }
         }
         .rightSide {
           .logo {
-            font-size: 2vw;
+            font-size: 2.2vw;
           }
         }
       }
@@ -103,7 +103,7 @@
             position: absolute;
             width: 100vw;
             height: 100vh;
-            z-index: -1;
+            z-index: -999;
             opacity: 0;
             overflow-y: scroll;
             // top: -50%;
@@ -122,22 +122,22 @@
               -o-backdrop-filter: blur(6px);
               backdrop-filter: blur(6px);
               position: absolute;
-              z-index: -1;
+              // z-index: -1;
               // top: -10%;
               opacity: 1;
               // transform: scale(1);
               width: 100vw;
               height: 100vh;
-            }
-            .item {
-              padding: 3.3vh 0;
-              font-size: 4vw;
-              letter-spacing: 0.05vw;
-              // @include m.flex();
-              color: c.$C_WHITE;
-              &:hover {
-                // background-color: c.$C_DARKBROWN;
-                // font-weight: 500;
+              .item {
+                padding: 3.3vh 0;
+                font-size: 4vw;
+                letter-spacing: 0.05vw;
+                // @include m.flex();
+                color: c.$C_WHITE;
+                &:hover {
+                  // background-color: c.$C_DARKBROWN;
+                  // font-weight: 500;
+                }
               }
             }
           }
@@ -146,7 +146,7 @@
           // margin-right: 30px;
           // @include m.flex(row, flex-end);
           font-family: "Cormorant SC";
-          font-size: 5vw;
+          font-size: 5.4vw;
           opacity: 0;
           transition: opacity 1s ease;
           color: c.$C_DARKNAVY;

@@ -26,7 +26,7 @@ const ProductDetail = () => {
     const product = { id, image, title, price, option: selected, quantity: 1 };
     addOrUpdateItem.mutate(product, {
       onSuccess: () => {
-        setSuccess("장바구니에 추가되었습니다.");
+        setSuccess("Added");
         setTimeout(() => setSuccess(null), 3000);
       },
     });
@@ -63,15 +63,8 @@ const ProductDetail = () => {
           </div>
           <p className={styles.price}>₩ &nbsp;{price}</p>
         </div>
-        {success && <p>{success}</p>}
-
-        {/* <button
-          className={`${styles.customBtn} ${styles.btn1}`}
-          onClick={onClick}
-        >
-          ADD &nbsp; TO &nbsp;CART
-        </button> */}
         <Button text={`ADD  TO CART`} onClick={onClick} />
+        {success && <p>{success}</p>}
       </div>
     </section>
   );

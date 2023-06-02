@@ -28,11 +28,13 @@ const CartItem = ({
   return (
     <li className={styles.wrapper}>
       <img className={styles.productImg} src={image} alt={title} />
-      <div className={styles.wrapper}>
-        <p className={styles.title}>{title}</p>
-        <p>{option}</p>
-        <p>₩{price}</p>
-        <div>
+      <div className={styles.InfoWrap}>
+        <p className={styles.title}>
+          {title} / {option}
+        </p>
+
+        <p>{`₩ ${price.toLocaleString()}`}</p>
+        <div className={styles.quantityWrap}>
           <IconMinus onClick={onClickMinus} />
           <span>{quantity}</span>
           <IconPlus onClick={onClickPlus} />

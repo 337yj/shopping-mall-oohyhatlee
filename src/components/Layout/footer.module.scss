@@ -46,7 +46,7 @@ footer {
     .rightSide {
       > li {
         margin: 0 5px;
-        font-size: 1.9vw;
+        font-size: 2vw;
       }
     }
   }
@@ -57,7 +57,7 @@ footer {
       @include m.flex(row);
 
       > li {
-        font-size: 2vw;
+        font-size: 3vw;
       }
     }
     .leftSide {
