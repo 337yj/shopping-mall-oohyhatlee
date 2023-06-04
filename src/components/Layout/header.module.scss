@@ -93,7 +93,7 @@
           // width: 100vw;
           // height: 100vh;
           .icon {
-            z-index: 999;
+            z-index: 9999;
             cursor: pointer;
             width: 9vw;
           }
@@ -104,14 +104,17 @@
             width: 100vw;
             height: 100vh;
             z-index: -999;
+            visibility: hidden;
             opacity: 0;
             overflow-y: scroll;
             // top: -50%;
             // transform: scale(0);
             // transform-origin: center;
-            transition: opacity 0.3s ease, transform 0.3s ease;
             margin: -76px -40px 0px;
+            // transition: visibility 0.3s ease;
+            transition: opacity 0.3s ease-in-out;
             &.isOpen {
+              visibility: visible;
               @include m.flex(column);
               margin: -76px -40px 0px;
               transform: scale(1.1);
@@ -129,11 +132,12 @@
               width: 100vw;
               height: 100vh;
               .item {
-                padding: 3.3vh 0;
+                margin: 3.3vh 0;
                 font-size: 4vw;
                 letter-spacing: 0.05vw;
                 // @include m.flex();
                 color: c.$C_WHITE;
+                cursor: pointer;
                 &:hover {
                   // background-color: c.$C_DARKBROWN;
                   // font-weight: 500;

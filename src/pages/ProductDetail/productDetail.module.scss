@@ -5,6 +5,7 @@
   @include m.flex();
   width: 100%;
   height: 100vh;
+  // padding: 20% 0;
 
   img {
     width: 34%;
@@ -68,9 +69,9 @@
     @include m.flex(column);
     width: 100%;
     height: 100%;
-
+    margin: 26% 0;
     overflow-y: scroll;
-    margin: 90px 0;
+
     img {
       width: 70%;
       height: 70%;

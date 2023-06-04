@@ -122,6 +122,7 @@ const Home = () => {
         </div>
       </section>
       {/* </Element> */}
+
       <section className={styles.landing_section4}>
         <a {...animation6} onClick={onClick("/products")}>
           Shop The <br />
