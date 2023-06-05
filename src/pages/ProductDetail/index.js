@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
-import { addOrUpdateToCart } from "../../api/firebase";
-import { Button } from "../../components/Common";
-import { useAuthContext } from "../../context/AuthContext";
+import { useLocation, useNavigate } from "react-router-dom";
 import useCart from "../../hooks/useCart";
+import { Button } from "../../components/Common";
 import styles from "./productDetail.module.scss";
 
 const ProductDetail = () => {
   // 장바구니 -> 사용자 id, 제품정보를 받아와서 firebase함수 호출하면됨
   // const { uid } = useAuthContext();
   const { addOrUpdateItem } = useCart();
+  const navigate = useNavigate();
 
   // 파람으로 전달받은 state를 받아옴
   const {
@@ -21,13 +20,14 @@ const ProductDetail = () => {
   const [selected, setSelected] = useState(options && options[0]);
 
   const onChange = (e) => setSelected(e.target.value);
+
   const onClick = (e) => {
     // 장바구니 추가
     const product = { id, image, title, price, option: selected, quantity: 1 };
     addOrUpdateItem.mutate(product, {
       onSuccess: () => {
-        setSuccess("Added");
-        setTimeout(() => setSuccess(null), 3000);
+        setSuccess("Go to Cart?");
+        setTimeout(() => setSuccess(null), 6000);
       },
     });
   };
@@ -64,7 +64,11 @@ const ProductDetail = () => {
           <p className={styles.price}>₩ &nbsp;{price}</p>
         </div>
         <Button text={`ADD  TO CART`} onClick={onClick} />
-        {success && <p>{success}</p>}
+        {success && (
+          <p className={styles.successText} onClick={() => navigate("/carts")}>
+            {success}
+          </p>
+        )}
       </div>
     </section>
   );

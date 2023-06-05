@@ -1,9 +1,6 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import { useAuthContext } from "../../context/AuthContext";
-import { getCart } from "../../api/firebase";
-import { Button, CartItem, PriceCard } from "../../components/Common";
 import useCart from "../../hooks/useCart";
+import { Button, CartItem, PriceCard } from "../../components/Common";
 import styles from "./myCart.module.scss";
 
 const SHIPPING = 3000;

@@ -2,77 +2,109 @@
 @use "../../styles/mixins/" as m;
 
 .wrapper {
-  @include m.flex(column);
-  min-height: 100vh;
+  // @include m.flex(column);
+  height: 100vh;
+  padding: 150px 20%;
   overflow-y: scroll;
 
-  > h2 {
-    text-align: center;
+  .subHeader {
     margin-bottom: 50px;
-    font-size: 1.3vw;
     font-family: "Junge", serif;
+    font-size: 32px;
+    text-align: center;
   }
+
   .uploadWrap {
     @include m.flex();
-    height: 100%;
+
+    // height: 100%;
+
     > figure {
-      width: 26vw;
-      height: 60vh;
-      background-color: lightgray;
-      // background-repeat: no-repeat;
-      // background-position: center;
-      // background-size: cover;
       position: relative;
-      // overflow: hidden;
-      // margin-right: 30px;
+      width: 30vw;
+      height: 70vh;
+      background-color: lightgray;
     }
+
     .uploadImage {
       position: absolute;
       width: 100%;
       height: 100%;
-      // top: 0;
-      // left: 0;
-      // right: 0;
       object-fit: cover;
       overflow: hidden;
     }
+
     .uploadForm {
       @include m.flex(column);
-      width: 26vw;
-      height: 60vh;
+      width: 30vw;
+      height: 70vh;
       padding: 0 2%;
       border: 1px solid c.$C_DARKNAVY;
+
       > label {
         width: 100%;
         margin-bottom: 3%;
+
         .uploadBtn {
-          letter-spacing: 2.5px;
-          font-size: 18px;
-          text-align: center;
-          // height: 5.4vh;
           padding: 2vh;
           border: 1px solid c.$C_DARKNAVY;
           background: transparent;
-          color: c.$C_DARKNAVY;
+          font-size: 18px;
           font-weight: bold;
+          text-align: center;
+          letter-spacing: 2.5px;
+          color: c.$C_DARKNAVY;
+
           :hover {
             background-color: c.$C_DARKNAVY;
           }
         }
       }
+
       .fileInput {
         display: none;
       }
+
       > input {
         width: 100%;
-        background-color: transparent;
-        border: 1px solid c.$C_DARKNAVY;
         padding: 30px;
         margin-bottom: 3%;
+        border: 1px solid c.$C_DARKNAVY;
+        background-color: transparent;
       }
     }
   }
 
-  @media screen and (max-width: 1023px) {
+  @media (max-width: 1023px) {
+    padding: 160px 10%;
+
+    .subHeader {
+      font-size: 3vw;
+    }
+
+    .uploadWrap {
+      @include m.flex(column);
+      > figure {
+        width: 80vw;
+        height: 50vh;
+      }
+      .uploadForm {
+        width: 80vw;
+        height: 100%;
+        padding: 4%;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .subHeader {
+      font-size: 3.8vw;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .subHeader {
+      font-size: 4.3vw;
+    }
   }
 }

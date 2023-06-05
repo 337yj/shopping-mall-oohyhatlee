@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import CartStatus from "../Common/CartStatus";
-import styles from "./header.module.scss";
-import { Login, Logout, Menu, IconClose } from "../../assets/index";
 import { scroller } from "react-scroll";
+import { Login, Logout, Menu, IconClose } from "../../assets/index";
+import styles from "./header.module.scss";
 
 const Header = () => {
   const { user, login, logout } = useAuthContext();
@@ -45,14 +45,14 @@ const Header = () => {
     }
   };
 
-  const onClickIcon = (event) => {
-    event.stopPropagation(); // 이벤트 전파 방지
+  const onClickIcon = (e) => {
+    e.stopPropagation();
     setIsOpen((prevIsOpen) => !prevIsOpen);
   };
 
   useEffect(() => {
-    const onClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const onClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setIsOpen(false);
       }
     };
@@ -200,7 +200,7 @@ const Header = () => {
                   <Logout />
                 </li>
               )}
-              <li onClick={onClick("carts")}>
+              <li onClick={onClick("/carts")}>
                 <CartStatus />
               </li>
             </div>

@@ -5,32 +5,31 @@
 
 .wrapper {
   @include m.flex(column);
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
   width: 100vw;
   height: 100%;
   scroll-padding-top: calc(50vh - 50%);
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 
   .landing_section1 {
+    width: 100%;
+    height: 100vh;
     background: url("../../assets/images/mainImg.jpg") no-repeat fixed center 90%;
     background-size: cover;
-
-    height: 100vh;
-    width: 100%;
 
     .logoWrap {
       @include m.flex();
       position: absolute;
       width: 100%;
       height: 100%;
+
       .logo {
         position: fixed;
         width: 32vw;
-
-        filter: drop-shadow(0px 0px 4px c.$C_WHITE);
         opacity: 1;
         transition: opacity 1s ease;
+        filter: drop-shadow(0px 0px 4px c.$C_WHITE);
 
         &.scrolled {
           opacity: 0;
@@ -41,161 +40,128 @@
   }
 
   .landing_section2 {
-    position: relative;
-    height: 100vh;
-    width: 100%;
     @include m.flex();
+    position: relative;
+    width: 100%;
+    height: 100vh;
     z-index: 999;
+
     > img {
-      // position: relative;
       width: 50vw;
       height: 100%;
       object-fit: cover;
     }
+
     .mainImg2 {
       position: relative;
     }
 
     .descriptionWrap1 {
-      width: 50%;
-      background: rgba(0, 0, 0, 0.075);
-      /* for iPhone */
-      // -webkit-backdrop-filter: blur(2px);
-      // -moz-backdrop-filter: blur(2px);
-      // -o-backdrop-filter: blur(2px);
-      // backdrop-filter: blur(2px);
-      // transform: scale(1.01);
-      font-family: "Cormorant Garamond";
-      color: c.$C_WHITE;
+      position: absolute;
       top: 0;
       left: 0;
       bottom: 0;
-      // right: 0;
-      // z-index: 999;
-      position: absolute;
+      width: 50%;
+      background: rgba(0, 0, 0, 0.075);
+      font-family: "Cormorant Garamond";
       font-size: 5vw;
-      // font-weight: bold;
-      // font-family: "Junge", serif;
+      color: c.$C_WHITE;
+
       .description {
         position: relative;
-        // @include m.flex(row, flex-start);
-        // // vertical-align: middle;
-        // padding-top: 30vh;
+        width: 100%;
         height: 20vh;
 
-        // font-size: 20vw;
-        // margin-left: -60px;
-
-        width: 100%;
         .text1 {
-          letter-spacing: 1.9px;
           position: absolute;
           top: 70%;
           left: 25%;
+          letter-spacing: 1.9px;
         }
         .text2 {
-          letter-spacing: 1.9px;
           position: absolute;
           top: 90%;
           right: 9%;
           transform: rotate(90deg);
+          letter-spacing: 1.9px;
         }
         .text3 {
-          letter-spacing: 1.9px;
           position: absolute;
           top: 180%;
-
           right: 16%;
+          letter-spacing: 1.9px;
         }
       }
     }
+
     .descriptionWrap2 {
       @include m.flex();
-      width: 100%;
+      width: 50%;
       height: 100%;
       background-color: c.$C_BACKGROUND;
+      z-index: 999;
+
       .mainImg3 {
         position: relative;
-        // z-index: 999;
         width: 30vw;
         height: 60vh;
-
         object-fit: cover;
       }
-      width: 50%;
 
-      z-index: 999;
       .text1 {
-        top: 9%;
         position: absolute;
+        top: 9%;
+        font-family: "Cormorant SC";
         font-size: 9vw;
         color: c.$C_DARKNAVY;
-        // text-align: center;
-        font-family: "Cormorant SC";
-        // writing-mode: vertical-lr;
-        // font-weight: bold;
-        // /* 세로로 오른쪽 -> 왼쪽 */
-        // // writing-mode: vertical-rl;
-        // filter: drop-shadow(0px 0px 4px #ffffff9d);
-        // /* 영어는 추가로 사용해야함 */
-        // text-orientation: upright;
         z-index: -1;
       }
       .text2 {
         position: absolute;
         bottom: 10%;
+        font-family: "Comforter Brush";
         font-size: 9vw;
         color: c.$C_DARKNAVY;
-        font-family: "Comforter Brush";
       }
     }
   }
 
   .landing_section3 {
-    background: url("../../assets/images/mainImg7.jpg") no-repeat fixed center 30%;
-    // background: url("../../assets/images/mainImg5.jpg") no-repeat center 70%;
-
-    background-size: cover;
+    @include m.flex();
     position: relative;
     width: 100%;
     height: 100vh;
-    @include m.flex();
+    background: url("../../assets/images/mainImg7.jpg") no-repeat fixed center 30%;
+    background-size: cover;
+
     .descriptionWrap {
       @include m.flex();
-      position: absolute;
-      width: 100%;
-      height: 100vh;
-      // z-index: 9999;
-      position: absolute;
+      position: fixed;
       top: 50%;
       left: 50%;
+      width: 100%;
+      height: 100vh;
       transform: translate(-50%, -50%);
-      position: fixed;
-      width: 55vw;
 
       .description {
-        // @include m.flex();
-        // position: absolute;
         position: fixed;
-        // height: 100vh;
-        // bottom: 40%;
-        // margin: 0 auto;
-        span {
-          vertical-align: middle;
-          color: c.$C_DARKNAVY;
-          font-size: 1.2vw;
-          font-style: italic;
-          padding-right: 4%;
-        }
-        opacity: 0;
-        transition: opacity 1s ease;
-
-        text-align: center;
-        line-height: 1.8;
         width: 50vw;
         font-family: "Junge", serif;
         font-size: 1.7vw;
+        text-align: center;
+        line-height: 1.8;
         color: c.$C_WHITE;
+        opacity: 0;
+        transition: opacity 1s ease;
+
+        span {
+          padding-right: 4%;
+          font-size: 1.2vw;
+          vertical-align: middle;
+          color: c.$C_DARKNAVY;
+          font-style: italic;
+        }
+
         &.scrolled {
           opacity: 1;
           transition: opacity 1s ease;
@@ -206,14 +172,11 @@
 
   .landing_section4 {
     position: relative;
-    height: 100vh;
     width: 100%;
-    z-index: 999;
-    // background-size: cover;
-    // position: relative;
-    // height: 100vh;
-    // width: 100%;
+    height: 100vh;
     background-color: c.$C_BACKGROUND;
+    z-index: 999;
+
     > svg {
       position: absolute;
       top: 10%;
@@ -221,28 +184,28 @@
       width: 16vw;
       height: 30vh;
     }
+
     > a {
-      // writing-mode: vertical-lr;
-      // /* 영어는 추가로 사용해야함 */
-      // text-orientation: upright;
       position: absolute;
-      bottom: 10%;
       left: 4%;
-      font-size: 5.3vw;
-      color: c.$C_DARKNAVY;
-      font-weight: bold;
+      bottom: 10%;
       font-family: "Cormorant SC";
+      font-size: 5.3vw;
+      font-weight: bold;
+      color: c.$C_DARKNAVY;
       cursor: pointer;
 
       &:hover {
         filter: drop-shadow(0px 4px 4px #34334398);
       }
+
       > svg {
-        margin-left: 1vw;
         width: 10%;
+        margin-left: 1vw;
         margin-bottom: -0.2vh;
       }
     }
+
     .mainImg4 {
       position: absolute;
       top: 12%;
@@ -253,8 +216,8 @@
     }
     .mainImg5 {
       position: absolute;
-      bottom: 0;
       left: 36%;
+      bottom: 0;
       width: 26vw;
       height: 58vh;
       object-fit: cover;
@@ -270,19 +233,18 @@
       object-fit: cover;
       object-position: bottom 30%;
     }
+
     .subDescription {
       position: absolute;
       top: 16%;
       right: 0;
       transform: rotate(90deg);
-      font-size: 2.6vw;
-
       font-family: "Cormorant Garamond";
-      color: c.$C_WHITE;
+      font-size: 2.6vw;
       font-weight: 500;
+      color: c.$C_WHITE;
     }
-    .text1 {
-    }
+
     .text2 {
       margin-top: 10%;
       margin-left: 70%;
@@ -290,49 +252,47 @@
   }
 
   .landing_section5 {
-    background: url("../../assets/images/mainImg8.jpg") no-repeat fixed center 50%;
-    background-size: cover;
+    @include m.flex();
+    position: relative;
     width: 100%;
     height: 100vh;
-    position: relative;
-    @include m.flex();
+    background: url("../../assets/images/mainImg8.jpg") no-repeat fixed center 50%;
+    background-size: cover;
+
     .descriptionWrap {
       @include m.flex();
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      position: absolute;
+      position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      position: fixed;
       width: 55vw;
+      height: 100%;
+
       .description {
-        span {
-          vertical-align: middle;
-          color: c.$C_DARKNAVY;
-          font-size: 1.2vw;
-          font-style: italic;
-          padding-right: 4%;
-        }
+        font-family: "Junge", serif;
+        font-size: 1.7vw;
+        text-align: center;
+        line-height: 1.8;
+        color: c.$C_WHITE;
         opacity: 0;
         transition: opacity 0.4s ease;
 
-        text-align: center;
-        line-height: 1.8;
-
-        font-family: "Junge", serif;
-        font-size: 1.7vw;
-        color: c.$C_WHITE;
         &.scrolled {
           opacity: 1;
           transition: opacity 2s ease;
+
+          span {
+            padding-right: 4%;
+            font-size: 1.2vw;
+            vertical-align: middle;
+            font-style: italic;
+            color: c.$C_DARKNAVY;
+          }
         }
       }
     }
   }
 
-  // // tablet
   @media screen and (max-width: 1023px) {
     .landing_section1 {
       .logoWrap {
@@ -378,13 +338,9 @@
 
     .landing_section2 {
       @include m.flex(column);
-      // position: relative;
       height: 100%;
-      // width: 100%;
-      // z-index: 999;
+
       .mainImg2 {
-        // position: relative;
-        // position: relative;
         width: 100vw;
         height: 100vh;
         object-fit: cover;
@@ -392,173 +348,83 @@
 
       .descriptionWrap1 {
         width: 100vw;
-
         font-size: 8vw;
-        // font-weight: bold;
-        // font-family: "Junge", serif;
+
         .description {
-          // position: relative;
-          // @include m.flex(row, flex-start);
-          // // vertical-align: middle;
-          // padding-top: 30vh;
-          // height: 20vh;
-
-          // font-size: 20vw;
-          // margin-left: -60px;
-
-          // width: 100%;
           .text1 {
-            // letter-spacing: 1.9px;
-            // position: absolute;
             top: 86%;
             left: 32%;
           }
           .text2 {
-            // letter-spacing: 1.9px;
-            // position: absolute;
             top: 110%;
             right: 12%;
-            // transform: rotate(90deg);
           }
           .text3 {
-            // letter-spacing: 1.9px;
-            // position: absolute;
             top: 196%;
-
             right: 14%;
           }
         }
       }
+
       .descriptionWrap2 {
-        // @include m.flex();
         width: 100vw;
         height: 100vh;
-        // background-color: c.$C_BACKGROUND;
         position: relative;
+
         .mainImg3 {
-          // z-index: 999;
           width: 60vw;
           height: 60vh;
           top: 5%;
-          // object-fit: cover;
         }
 
-        // z-index: 999;
         .text1 {
           top: 18%;
-          // position: absolute;
           font-size: 13vw;
-          // color: c.$C_DARKNAVY;
-          // text-align: center;
-          // font-family: "Cormorant SC";
-          // writing-mode: vertical-lr;
-          // font-weight: bold;
-          // /* 세로로 오른쪽 -> 왼쪽 */
-          // // writing-mode: vertical-rl;
-          // filter: drop-shadow(0px 0px 4px #ffffff9d);
-          // /* 영어는 추가로 사용해야함 */
-          // text-orientation: upright;
           z-index: 999;
         }
         .text2 {
-          // position: absolute;
           bottom: 9%;
           font-size: 13vw;
-          // color: c.$C_DARKNAVY;
-          // font-family: "Comforter Brush";
         }
       }
     }
 
     .landing_section4 {
-      position: relative;
-      height: 100vh;
-      width: 100%;
-      z-index: 999;
-      // background-size: cover;
-      // position: relative;
-      // height: 100vh;
-      // width: 100%;
-      background-color: c.$C_BACKGROUND;
-      > svg {
-        position: absolute;
-        top: 10%;
-        left: 33%;
-        width: 16vw;
-        height: 30vh;
-      }
       > a {
-        // writing-mode: vertical-lr;
-        // /* 영어는 추가로 사용해야함 */
-        // text-orientation: upright;
-        position: absolute;
         bottom: 6%;
         left: 8%;
         font-size: 6vw;
-        color: c.$C_DARKNAVY;
-        font-weight: bold;
-        font-family: "Cormorant SC";
-        cursor: pointer;
-        z-index: 9999;
-        &:hover {
-          filter: drop-shadow(0px 4px 4px #34334398);
-        }
-        > svg {
-          margin-left: 1vw;
-          width: 10%;
-          margin-bottom: -0.2vh;
-        }
       }
       .mainImg4 {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 33.333vw;
-        height: 100%;
-        object-fit: cover;
         visibility: hidden;
       }
       .mainImg5 {
-        position: absolute;
         top: 50%;
         left: 0;
         width: 100vw;
         height: 50%;
-        object-fit: cover;
       }
       .mainImg6 {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
         width: 100vw;
         height: 50%;
-        object-fit: cover;
-        // object-position: center;
       }
+
       .subDescription {
-        position: absolute;
         top: 27%;
         right: 12%;
         transform: rotate(360deg);
         font-size: 6vw;
+      }
 
-        font-family: "Cormorant Garamond";
-        color: c.$C_WHITE;
-        font-weight: 500;
-      }
-      .text1 {
-      }
       .text2 {
-        margin-top: 10%;
         margin-left: 40%;
       }
     }
 
     .landing_section3 {
       .descriptionWrap {
-        width: 62vw;
         .description {
+          width: 66vw;
           font-size: 3.4vw;
           span {
             font-size: 2.4vw;
@@ -569,8 +435,8 @@
 
     .landing_section5 {
       .descriptionWrap {
-        width: 62vw;
         .description {
+          width: 66vw;
           font-size: 3.4vw;
           span {
             font-size: 2.4vw;
@@ -591,7 +457,6 @@
 
     .landing_section3 {
       .descriptionWrap {
-        width: 62vw;
         .description {
           font-size: 3.8vw;
           span {
@@ -603,7 +468,6 @@
 
     .landing_section5 {
       .descriptionWrap {
-        width: 62vw;
         .description {
           font-size: 3.8vw;
           span {

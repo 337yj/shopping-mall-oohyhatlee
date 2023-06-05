@@ -1,9 +1,7 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
-import { addNewProduct } from "../../api/firebase";
 import { uploadImage } from "../../api/uploader";
-import { Button } from "../../components/Common";
 import useProducts from "../../hooks/useProducts";
+import { Button } from "../../components/Common";
 import styles from "./newProduct.module.scss";
 
 const NewProduct = () => {
@@ -29,7 +27,6 @@ const NewProduct = () => {
    * */
   const onChange = (e) => {
     const { name, value, files } = e.target;
-    // console.log(e.target.files);
     if (name === "file") {
       setFile(files && files[0]);
       return;
@@ -50,30 +47,21 @@ const NewProduct = () => {
           { product, url },
           {
             onSuccess: () => {
-              setSuccess("성공적으로 제품이 추가되었습니다.");
+              setSuccess("The product has been successfully added.");
               setTimeout(() => {
                 setSuccess(null);
               }, 4000);
             },
           },
         );
-        // console.log(url);
-        // Firebase에 새로운 제품을 추가함
-        // addNewProduct(product, url) //
-        //   .then(() => {
-        //     setSuccess("성공적으로 제품이 추가되었습니다.");
-        //     setTimeout(() => {
-        //       setSuccess(null);
-        //     }, 4000);
-        //   });
       })
       .finally(() => setIsUploading(false));
   };
 
   return (
     <main className={styles.wrapper}>
-      <h2>New Product Upload</h2>
-      {success && <p className={styles.uploadSuccess}>Upload {success}</p>}
+      <h2 className={styles.subHeader}>New Product Upload</h2>
+      {success && <p className={styles.uploadSuccess}>{success}</p>}
       <section className={styles.uploadWrap}>
         <figure>
           {file && (

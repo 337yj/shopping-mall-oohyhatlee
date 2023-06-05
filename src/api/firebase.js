@@ -95,7 +95,7 @@ export const getCart = async (userId) => {
   // 사용자의 아이디별로 장바구니 보관해줄거임
   return get(ref(database, `carts/${userId}`)).then((snapshot) => {
     const items = snapshot.val() || {};
-    console.log(Object.values(items));
+
     return Object.values(items);
   });
 };

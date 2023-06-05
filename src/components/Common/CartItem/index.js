@@ -1,9 +1,8 @@
-import React, { useMemo, useState } from "react";
-import { addOrUpdateToCart, removeFromCart } from "../../../api/firebase";
-import { IconDelete, IconMinus, IconPlus } from "../../../assets/icon";
+import React from "react";
 import useCart from "../../../hooks/useCart";
-import { v4 as uuid } from "uuid";
+import { IconDelete, IconMinus, IconPlus } from "../../../assets/icon";
 import styles from "./cartItem.module.scss";
+
 const CartItem = ({
   product,
   product: { id, image, title, option, quantity, price },

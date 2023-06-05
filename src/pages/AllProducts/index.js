@@ -1,8 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import Products from "../../components/Common/Products";
-import ProductCard from "../../components/Common/Products/ProductCard";
 import useProducts from "../../hooks/useProducts";
+import ProductCard from "../../components/Common/Products/ProductCard";
 import styles from "./allProducts.module.scss";
 
 const AllProducts = () => {

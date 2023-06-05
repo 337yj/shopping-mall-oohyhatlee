@@ -45,18 +45,36 @@ const Home = () => {
       setScrolled(false);
     }
 
-    if (scrollRatio > 2.3) {
-      setScrolled2(false);
-    } else if (scrollRatio > 1.5) {
-      setScrolled2(true);
-    } else {
-      setScrolled2(false);
+    if (document.documentElement.clientWidth <= 767) {
+      if (scrollRatio > 3.3) {
+        setScrolled2(false);
+      } else if (scrollRatio > 2.5) {
+        setScrolled2(true);
+      } else {
+        setScrolled2(false);
+      }
+
+      if (scrollRatio > 4.5) {
+        setScrolled3(true);
+      } else {
+        setScrolled3(false);
+      }
     }
 
-    if (scrollRatio > 3.5) {
-      setScrolled3(true);
-    } else {
-      setScrolled3(false);
+    if (document.documentElement.clientWidth >= 767) {
+      if (scrollRatio > 2.3) {
+        setScrolled2(false);
+      } else if (scrollRatio > 1.5) {
+        setScrolled2(true);
+      } else {
+        setScrolled2(false);
+      }
+
+      if (scrollRatio > 3.5) {
+        setScrolled3(true);
+      } else {
+        setScrolled3(false);
+      }
     }
   };
 
@@ -105,6 +123,7 @@ const Home = () => {
           </p>
         </div>
       </section>
+
       <Element name="landing_section3" className={styles.landingElement1} />
       <section className={styles.landing_section3}>
         <div className={styles.descriptionWrap}>
@@ -121,7 +140,6 @@ const Home = () => {
           </p>
         </div>
       </section>
-      {/* </Element> */}
 
       <section className={styles.landing_section4}>
         <a {...animation6} onClick={onClick("/products")}>
