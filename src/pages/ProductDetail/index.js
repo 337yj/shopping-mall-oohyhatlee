@@ -53,6 +53,7 @@ const ProductDetail = () => {
         <div className={styles.mainInfo}>
           <div className={styles.optionWrap}>
             <label htmlFor="select">OPTION:</label>
+            {/* <div class="select"> */}
             <select id="select" onChange={onChange} value={selected}>
               {/* 옵션의 경우 렌더링 이후에 변경될일 없으니 key값으로 index 괜찮음 */}
               {options &&
@@ -60,6 +61,7 @@ const ProductDetail = () => {
                   <option key={index}>{option}</option>
                 ))}
             </select>
+            {/* </div> */}
           </div>
           <p className={styles.price}>₩ &nbsp;{price}</p>
         </div>

@@ -49,10 +49,26 @@
       flex-shrink: 0;
 
       .optionWrap {
+        @include m.flex();
+
         label {
           flex-shrink: 0;
           font-family: "Junge", serif;
           font-size: 1vw;
+          margin-right: 8%;
+        }
+
+        > select {
+          flex: 1;
+          padding: 0 20%;
+          background-color: c.$C_DARKNAVY;
+          font-size: 0.8vw;
+          color: c.$C_WHITE;
+          cursor: pointer;
+
+          &::-ms-expand {
+            display: none;
+          }
         }
       }
 
