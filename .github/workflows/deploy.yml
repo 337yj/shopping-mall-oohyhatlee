@@ -25,6 +25,9 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
+      - name: Set up environment variables
+        run: cp .env build/.env
+
       - name: Build
         env:
           CI: ""
