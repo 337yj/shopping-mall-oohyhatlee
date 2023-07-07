@@ -7,24 +7,10 @@ import styles from "./newProduct.module.scss";
 const NewProduct = () => {
   const [product, setProduct] = useState({});
   const [file, setFile] = useState();
-  // 업로딩 중인지 UI
   const [isUploading, setIsUploading] = useState(false);
-  // 업로드 성공했는지 UI
   const [success, setSuccess] = useState();
   const { addProduct } = useProducts();
-  // const queryClient = useQueryClient();
-  // const addProduct = useMutation(
-  //   ({ product, url }) => addNewProduct(product, url),
-  //   {
-  //     onSuccess: () => queryClient.invalidateQueries(["product"]),
-  //   }
-  // );
 
-  /**
-   * 이미지파일의 경우에는 file을 value로 설정하는것이 아니라 나중에 이미지가 업로드된 url을 할당해줘야함
-   * ==> file일 경우에는 setFile로 상태변경
-   * 그리고 이미지를 하나만 선택해서 사용해야 되니까 files[0]
-   * */
   const onChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "file") {
@@ -40,7 +26,6 @@ const NewProduct = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     setIsUploading(true);
-    // 제품의 사진을 Cloudinary에 업로드 하고 url을 획득
     uploadImage(file)
       .then((url) => {
         addProduct.mutate(

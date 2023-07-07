@@ -1,6 +1,4 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-
-import React from "react";
 import { addNewProduct, getProducts as fetchProducts } from "../api/firebase";
 
 const useProducts = () => {
@@ -14,7 +12,7 @@ const useProducts = () => {
     ({ product, url }) => addNewProduct(product, url),
     {
       onSuccess: () => queryClient.invalidateQueries(["products"]),
-    }
+    },
   );
 
   return { productsQuery, addProduct };

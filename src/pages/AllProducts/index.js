@@ -1,6 +1,6 @@
 import React from "react";
 import useProducts from "../../hooks/useProducts";
-import ProductCard from "../../components/Common/Products/ProductCard";
+import ProductCard from "../../components/Common/ProductCard";
 import styles from "./allProducts.module.scss";
 
 const AllProducts = () => {

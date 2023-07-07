@@ -22,7 +22,6 @@ const ProductDetail = () => {
   const onChange = (e) => setSelected(e.target.value);
 
   const onClick = (e) => {
-    // 장바구니 추가
     const product = { id, image, title, price, option: selected, quantity: 1 };
     addOrUpdateItem.mutate(product, {
       onSuccess: () => {
@@ -34,7 +33,6 @@ const ProductDetail = () => {
 
   return (
     <section className={styles.wrapper}>
-      {/* <p>{category}</p> */}
       <img src={image} alt={title} />
       <div className={styles.InfoWrap}>
         <h2>{title}</h2>
@@ -53,7 +51,6 @@ const ProductDetail = () => {
         <div className={styles.mainInfo}>
           <div className={styles.optionWrap}>
             <label htmlFor="select">OPTION:</label>
-            {/* <div class="select"> */}
             <select id="select" onChange={onChange} value={selected}>
               {/* 옵션의 경우 렌더링 이후에 변경될일 없으니 key값으로 index 괜찮음 */}
               {options &&
@@ -61,7 +58,6 @@ const ProductDetail = () => {
                   <option key={index}>{option}</option>
                 ))}
             </select>
-            {/* </div> */}
           </div>
           <p className={styles.price}>₩ &nbsp;{price}</p>
         </div>

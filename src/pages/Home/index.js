@@ -2,14 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useScrollFadeIn } from "../../hooks/useScrollFadeIn";
 import { Element } from "react-scroll";
-import { logo, IconArrow, CurvedText } from "../../assets/index";
-import {
-  mainImg2,
-  mainImg3,
-  mainImg4,
-  mainImg5,
-  mainImg6,
-} from "../../assets/index";
+import { logo, IconArrow } from "../../assets/index";
+import { mainImg2, mainImg3, mainImg4, mainImg5 } from "../../assets/index";
 import styles from "./home.module.scss";
 
 const Home = () => {
@@ -21,12 +15,11 @@ const Home = () => {
   const animation1 = useScrollFadeIn("right", 1, 0.4);
   const animation2 = useScrollFadeIn("left", 1, 0.2);
   const animation3 = useScrollFadeIn("down", 1, 0.8);
-  const animation4 = useScrollFadeIn("left", 1, 0.6);
+  const animation4 = useScrollFadeIn("left", 1, 0.4);
   const animation5 = useScrollFadeIn("place", 1, 0.4);
-  const animation6 = useScrollFadeIn("right", 1, 0.3);
-  const animation7 = useScrollFadeIn("down", 1.2, 1.5);
+  const animation6 = useScrollFadeIn("right", 1, 0.2);
+  const animation7 = useScrollFadeIn("left", 1, 0.3);
   const animation8 = useScrollFadeIn("left", 1, 0.3);
-  const animation9 = useScrollFadeIn("left", 1, 0.3);
 
   const onClick = (path) => {
     return () => {
@@ -142,21 +135,25 @@ const Home = () => {
       </section>
 
       <section className={styles.landing_section4}>
-        <a {...animation6} onClick={onClick("/products")}>
-          Shop The <br />
-          Collection
+        <div
+          {...animation6}
+          className={styles.linkWrap}
+          onClick={onClick("/products")}
+        >
+          <a>
+            Shop The <br />
+            Collection
+          </a>
           <IconArrow />
-        </a>
+        </div>
 
-        <CurvedText {...animation7} />
         <img src={mainImg4} className={styles.mainImg4} alt="mainImage" />
         <img src={mainImg5} className={styles.mainImg5} alt="mainImage" />
-        <img src={mainImg6} className={styles.mainImg6} alt="mainImage" />
         <div className={styles.subDescription}>
-          <p {...animation8} className={styles.text1}>
+          <p {...animation7} className={styles.text1}>
             Summer 2023
           </p>
-          <p {...animation9} className={styles.text2}>
+          <p {...animation8} className={styles.text2}>
             Collection
           </p>
         </div>
