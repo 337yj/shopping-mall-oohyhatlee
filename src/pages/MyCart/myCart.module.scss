@@ -4,7 +4,7 @@
 .wrapper {
   @include m.flex(column, flex-start);
   height: 100vh;
-  padding: 150px 20%;
+  margin: 150px 20%;
   overflow-y: scroll;
 
   .subHeader {
@@ -40,8 +40,6 @@
   }
 
   @media (max-width: 1023px) {
-    padding: 160px 10%;
-
     .subHeader {
       font-size: 3vw;
     }
@@ -78,7 +76,7 @@
   }
 
   @media (max-width: 480px) {
-    padding: 100px 20%;
+    margin: 100px 20%;
 
     .subHeader {
       font-size: 4.3vw;

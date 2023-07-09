@@ -61,7 +61,6 @@ const NewProduct = () => {
           <label htmlFor="file">
             <div className={styles.uploadBtn}>Choose File</div>
           </label>
-          {/* accept='image/*' 이미지 타입에 확장자는 상관없음 */}
           <input
             type="file"
             accept="image/*"
@@ -71,7 +70,6 @@ const NewProduct = () => {
             onChange={onChange}
             className={styles.fileInput}
           />
-          {/* product에 title이 없다면 ''빈문자 반환 */}
           <input
             type="text"
             name="title"

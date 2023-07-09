@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuthContext } from "../../context/AuthContext";
-import CartStatus from "../Common/CartStatus";
+import { useAuthContext } from "../../../context/AuthContext";
+import CartStatus from "../../Common/CartStatus";
 import { scroller } from "react-scroll";
-import { Login, Logout, Menu, IconClose } from "../../assets/index";
+import { Login, Logout, Menu, IconClose } from "../../../assets/index";
 import styles from "./header.module.scss";
 
 const Header = () => {

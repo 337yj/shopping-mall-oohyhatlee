@@ -5,12 +5,9 @@ import { Button } from "../../components/Common";
 import styles from "./productDetail.module.scss";
 
 const ProductDetail = () => {
-  // 장바구니 -> 사용자 id, 제품정보를 받아와서 firebase함수 호출하면됨
-  // const { uid } = useAuthContext();
   const { addOrUpdateItem } = useCart();
   const navigate = useNavigate();
 
-  // 파람으로 전달받은 state를 받아옴
   const {
     state: {
       product: { id, image, title, description, category, price, options },
@@ -52,7 +49,6 @@ const ProductDetail = () => {
           <div className={styles.optionWrap}>
             <label htmlFor="select">OPTION:</label>
             <select id="select" onChange={onChange} value={selected}>
-              {/* 옵션의 경우 렌더링 이후에 변경될일 없으니 key값으로 index 괜찮음 */}
               {options &&
                 options.map((option, index) => (
                   <option key={index}>{option}</option>
