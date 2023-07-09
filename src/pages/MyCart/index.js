@@ -6,10 +6,6 @@ import styles from "./myCart.module.scss";
 const SHIPPING = 3000;
 
 const MyCart = () => {
-  // getCart에 userId 전달해줘야하니
-  // const { uid } = useAuthContext();
-
-  // const { isLoading, data: products } = useQuery(["carts"], () => getCart(uid));
   const {
     cartQuery: { isLoading, data: products },
   } = useCart();

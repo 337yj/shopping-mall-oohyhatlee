@@ -23,7 +23,6 @@ const ProductCard = ({
         <h3>{title}</h3>
         <p>{`₩ ${price.toLocaleString()}`}</p>
       </div>
-      {/* <p>{category}</p> */}
     </li>
   );
 };

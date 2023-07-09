@@ -106,12 +106,12 @@ body {
 }
 
 button {
-  border:none; 
-  border-radius:0; 
-  background: inherit; 
-  box-shadow:none; 
-  overflow:visible; 
-  cursor:pointer;
+  border: none;
+  border-radius: 0;
+  background: inherit;
+  box-shadow: none;
+  overflow: visible;
+  cursor: pointer;
 }
 
 ol,
@@ -121,11 +121,12 @@ li {
 }
 
 a {
-  text-decoration: none; 
+  text-decoration: none;
   outline: none;
 }
 
-a:hover, a:active {
+a:hover,
+a:active {
   text-decoration: none;
 }
 

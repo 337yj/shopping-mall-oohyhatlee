@@ -31,28 +31,27 @@
 
   .productInfo {
     font-family: "Cormorant SC";
-    font-size: 1.1vw;
+    font-size: 1.2vw;
     h3 {
       padding-bottom: 8px;
     }
   }
 
   @media (max-width: 1023px) {
-    padding-bottom: 10%;
     .productInfo {
-      font-size: 3vw;
+      font-size: 2vw;
     }
   }
 
   @media (max-width: 767px) {
     .productInfo {
-      font-size: 3.8vw;
+      font-size: 3vw;
     }
   }
 
   @media (max-width: 480px) {
     .productInfo {
-      font-size: 4.3vw;
+      font-size: 3.7vw;
     }
   }
 }

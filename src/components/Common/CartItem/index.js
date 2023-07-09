@@ -8,7 +8,6 @@ const CartItem = ({
   product: { id, image, title, option, quantity, price },
 }) => {
   const { addOrUpdateItem, removeItem } = useCart();
-  // const [currentQuantity, setCurrentQuantity] = useState(quantity);
 
   const onClickMinus = () => {
     if (quantity < 2) return;
@@ -20,9 +19,6 @@ const CartItem = ({
   };
 
   const onClickDelete = () => removeItem.mutate(id);
-
-  // const uniqueId = `${id}_${option}_${uuid()}`;
-  // const productKey = useMemo(() => uniqueId, [uniqueId]);
 
   return (
     <li className={styles.wrapper}>

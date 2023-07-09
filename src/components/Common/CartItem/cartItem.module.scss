@@ -3,7 +3,7 @@
 
 .wrapper {
   @include m.flex();
-  font-size: 24px;
+  font-size: 18px;
 
   .productImg {
     width: 17vw;
@@ -101,7 +101,7 @@
   }
 
   @media (max-width: 480px) {
-    font-size: 5vw;
+    font-size: 4vw;
 
     .InfoWrap {
       @include m.flex(column);
