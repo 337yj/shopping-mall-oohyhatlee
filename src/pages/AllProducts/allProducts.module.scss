@@ -12,23 +12,34 @@
     font-family: "Junge", serif;
   }
 
-  .categories {
-    @include m.flex(row, center, center);
+  .categoriesWrap {
+    @include m.flex();
     margin-bottom: 50px;
-    column-gap: 10vw;
 
-    > li {
-      cursor: pointer;
+    .categories {
+      @include m.flex();
+      column-gap: 8vw;
+      margin-right: 8vw;
 
-      &.selected {
-        font-weight: bold;
-        color: c.$C_SKYBLUE;
+      > li {
+        cursor: pointer;
+
+        &.selected {
+          font-weight: bold;
+          color: c.$C_SKYBLUE;
+        }
+
+        &:hover {
+          font-weight: bold;
+          color: c.$C_SKYBLUE;
+        }
       }
+    }
 
-      &:hover {
-        font-weight: bold;
-        color: c.$C_SKYBLUE;
-      }
+    > input {
+      padding: 4px 8px;
+      border: none;
+      border-radius: 6px;
     }
   }
 
@@ -39,10 +50,17 @@
 
   .productsWrap {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    flex-wrap: wrap;
+    column-gap: 16px;
     width: 100%;
     height: 100%;
-    gap: 30px;
+    padding: 20px;
+
+    > p {
+      height: 100vw;
+      margin: auto;
+    }
   }
 
   @media (max-width: 1023px) {
@@ -50,22 +68,15 @@
       font-size: 3vw;
     }
 
-    .categories {
-      @include m.flex(row, center, center);
-      margin-bottom: 20px;
-      column-gap: 3vw;
+    .categoriesWrap {
+      .categories {
+        column-gap: 4vw;
+        margin-right: 4vw;
+      }
     }
 
     .productsWrap {
-      display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      column-gap: 12px;
-      width: 100%;
-      height: 100%;
-      padding: 20px;
-
-      overflow-y: scroll;
-      flex-wrap: wrap;
     }
   }
 
@@ -73,11 +84,33 @@
     .subHeader {
       font-size: 3.8vw;
     }
+
+    .categoriesWrap {
+      @include m.flex(column);
+      margin-bottom: 20px;
+      .categories {
+        column-gap: 3vw;
+        margin-right: 3vw;
+        > li {
+          margin-bottom: 30px;
+        }
+      }
+    }
+
+    .productsWrap {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
   }
 
   @media (max-width: 480px) {
+    margin: 100px 30px;
+
     .subHeader {
       font-size: 4.3vw;
+    }
+
+    .productsWrap {
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     }
   }
 }

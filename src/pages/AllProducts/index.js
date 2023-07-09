@@ -9,18 +9,31 @@ const AllProducts = () => {
   } = useProducts();
 
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  const onSearch = (e) => {
+    setSearchKeyword(e.target.value);
+  };
 
   const handleCategorySelect = (category) => {
     if (category === selectedCategory) {
-      setSelectedCategory(null);
+      setSelectedCategory(category);
     } else {
       setSelectedCategory(category);
     }
   };
 
-  const filteredProducts = selectedCategory
-    ? products.filter((product) => product.category === selectedCategory)
-    : products;
+  const filteredProducts = products
+    ? selectedCategory
+      ? products.filter(
+          (product) =>
+            product.category === selectedCategory &&
+            product.title.toLowerCase().includes(searchKeyword.toLowerCase()),
+        )
+      : products.filter((product) =>
+          product.title.toLowerCase().includes(searchKeyword.toLowerCase()),
+        )
+    : [];
 
   return (
     <section className={styles.wrapper}>
@@ -28,50 +41,60 @@ const AllProducts = () => {
       {isLoading && <p className={styles.loading}>Loading...</p>}
       {error && <p>{error}</p>}
 
-      <ul className={styles.categories}>
-        <li
-          className={selectedCategory === null ? styles.selected : ""}
-          onClick={() => handleCategorySelect(null)}
-        >
-          All
-        </li>
-        <li
-          className={selectedCategory === "Bottom" ? styles.selected : ""}
-          onClick={() => handleCategorySelect("Bottom")}
-        >
-          Bottom
-        </li>
-        <li
-          className={selectedCategory === "Top" ? styles.selected : ""}
-          onClick={() => handleCategorySelect("Top")}
-        >
-          Top
-        </li>
-        <li
-          className={selectedCategory === "Dress" ? styles.selected : ""}
-          onClick={() => handleCategorySelect("Dress")}
-        >
-          Dress
-        </li>
-        <li
-          className={selectedCategory === "Outer" ? styles.selected : ""}
-          onClick={() => handleCategorySelect("Outer")}
-        >
-          Outer
-        </li>
-        <li
-          className={selectedCategory === "Etc" ? styles.selected : ""}
-          onClick={() => handleCategorySelect("Etc")}
-        >
-          Etc
-        </li>
-      </ul>
-
+      <div className={styles.categoriesWrap}>
+        <ul className={styles.categories}>
+          <li
+            className={!selectedCategory ? styles.selected : ""}
+            onClick={() => handleCategorySelect(null)}
+          >
+            All
+          </li>
+          <li
+            className={selectedCategory === "Bottom" ? styles.selected : ""}
+            onClick={() => handleCategorySelect("Bottom")}
+          >
+            Bottom
+          </li>
+          <li
+            className={selectedCategory === "Top" ? styles.selected : ""}
+            onClick={() => handleCategorySelect("Top")}
+          >
+            Top
+          </li>
+          <li
+            className={selectedCategory === "Dress" ? styles.selected : ""}
+            onClick={() => handleCategorySelect("Dress")}
+          >
+            Dress
+          </li>
+          <li
+            className={selectedCategory === "Outer" ? styles.selected : ""}
+            onClick={() => handleCategorySelect("Outer")}
+          >
+            Outer
+          </li>
+          <li
+            className={selectedCategory === "Etc" ? styles.selected : ""}
+            onClick={() => handleCategorySelect("Etc")}
+          >
+            Etc
+          </li>
+        </ul>
+        <input
+          type="text"
+          value={searchKeyword}
+          onChange={onSearch}
+          placeholder="Search products"
+        />
+      </div>
       <ul className={styles.productsWrap}>
-        {filteredProducts &&
+        {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
-          ))}
+          ))
+        ) : (
+          <p>No products found.</p>
+        )}
       </ul>
     </section>
   );
