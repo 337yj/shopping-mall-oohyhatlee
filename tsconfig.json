@@ -14,8 +14,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "declaration": true,
     "typeRoots": ["src/assets"]
   },
-  "include": ["src", "./custom.d.ts"]
+  "include": ["src", "./custom.d.ts"],
+  "exclude": ["node_modules", "build"]
 }

@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 
-const ProtectedRoute = ({ children, requireAdmin }) => {
+interface ProtectedRouteProps {
+  children: React.ReactNode;
+  requireAdmin?: boolean;
+}
+
+const ProtectedRoute = ({ children, requireAdmin }: ProtectedRouteProps) => {
   const { user } = useAuthContext();
   const [showAlert, setShowAlert] = useState(false);
 
@@ -14,7 +19,7 @@ const ProtectedRoute = ({ children, requireAdmin }) => {
     return <Navigate to="/" replace={true} />;
   }
 
-  return children;
+  return <>{children}</>;
 };
 
 export default ProtectedRoute;

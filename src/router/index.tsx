@@ -10,7 +10,7 @@ import {
   NewProduct,
   ProductDetail,
   MyCart,
-  NotFound,
+  // NotFound,
   ProtectedRoute,
 } from "../pages";
 
