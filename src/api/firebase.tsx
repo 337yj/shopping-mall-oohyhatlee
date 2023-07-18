@@ -95,7 +95,6 @@ export const getProducts = async (): Promise<Product[]> => {
 export const getCart = async (userId: User): Promise<Product[]> => {
   return get(ref(database, `carts/${userId}`)).then((snapshot) => {
     const items = snapshot.val() || {};
-    console.log(items);
     return Object.values(items);
   });
 };
