@@ -6,8 +6,6 @@ import {
   GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
 } from "firebase/auth";
 import { getDatabase, ref, set, get, remove } from "firebase/database";
 
@@ -32,8 +30,15 @@ export const logout = () => {
   signOut(auth).catch(console.error);
 };
 
+interface User {
+  uid: string;
+  isAdmin?: boolean;
+}
+
 // 사용자 상태 정보
-export const onUserStateChange = (callback) => {
+export const onUserStateChange = (
+  callback: (user: User | null) => void,
+): void => {
   onAuthStateChanged(auth, async (user) => {
     const updatedUser = user ? await adminUser(user) : null;
     callback(updatedUser);
@@ -41,7 +46,7 @@ export const onUserStateChange = (callback) => {
 };
 
 // 어드민 사용자
-const adminUser = async (user) => {
+const adminUser = async (user: User): Promise<User> => {
   return get(ref(database, "admins")).then((snapshot) => {
     if (snapshot.exists()) {
       const admins = snapshot.val();
@@ -52,8 +57,20 @@ const adminUser = async (user) => {
   });
 };
 
+interface Product {
+  id: string;
+  title: string;
+  price: string;
+  category: string;
+  description: string;
+  options: string;
+}
+
 // 제품 추가하기
-export const addNewProduct = async (product, imageUrl) => {
+export const addNewProduct = async (
+  product: Product,
+  imageUrl: string,
+): Promise<void> => {
   const id = uuid();
   return set(ref(database, `products/${id}`), {
     ...product,
@@ -65,7 +82,7 @@ export const addNewProduct = async (product, imageUrl) => {
 };
 
 // 제품 정보 가져오기
-export const getProducts = async () => {
+export const getProducts = async (): Promise<Product[]> => {
   return get(ref(database, "products")).then((snapshot) => {
     if (snapshot.exists()) {
       return Object.values(snapshot.val());
@@ -75,20 +92,26 @@ export const getProducts = async () => {
 };
 
 // 특정 사용자의 장바구니 읽어오기
-export const getCart = async (userId) => {
+export const getCart = async (userId: User): Promise<Product[]> => {
   return get(ref(database, `carts/${userId}`)).then((snapshot) => {
     const items = snapshot.val() || {};
-
+    console.log(items);
     return Object.values(items);
   });
 };
 
 // 장바구니 추가/ 업뎃
-export const addOrUpdateToCart = async (userId, product) => {
+export const addOrUpdateToCart = async (
+  userId: User,
+  product: Product,
+): Promise<void> => {
   return set(ref(database, `carts/${userId}/${product.id}`), product);
 };
 
 // 장바구니 삭제
-export const removeFromCart = async (userId, productId) => {
+export const removeFromCart = async (
+  userId: User,
+  productId: Product,
+): Promise<void> => {
   return remove(ref(database, `carts/${userId}/${productId}`));
 };
