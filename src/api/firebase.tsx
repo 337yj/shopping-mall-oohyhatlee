@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { getDatabase, ref, set, get, remove } from "firebase/database";
 import { User } from "../types/common";
+import { Product } from "../types/common";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -23,8 +24,13 @@ const provider = new GoogleAuthProvider();
 const auth = getAuth();
 const database = getDatabase(app);
 
-export const login = () => {
-  signInWithPopup(auth, provider).catch(console.error);
+export const login = async () => {
+  try {
+    await signInWithPopup(auth, provider);
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 
 export const logout = () => {
@@ -53,15 +59,6 @@ const adminUser = async (user: User): Promise<User> => {
   });
 };
 
-interface Product {
-  id: string;
-  title: string;
-  price: string;
-  category: string;
-  description: string;
-  options: string;
-}
-
 // 제품 추가하기
 export const addNewProduct = async (
   product: Product,
@@ -88,8 +85,8 @@ export const getProducts = async (): Promise<Product[]> => {
 };
 
 // 특정 사용자의 장바구니 읽어오기
-export const getCart = async (userId: User): Promise<Product[]> => {
-  return get(ref(database, `carts/${userId}`)).then((snapshot) => {
+export const getCart = async (uid: string | null): Promise<Product[]> => {
+  return get(ref(database, `carts/${uid}`)).then((snapshot) => {
     const items = snapshot.val() || {};
     return Object.values(items);
   });
@@ -97,16 +94,13 @@ export const getCart = async (userId: User): Promise<Product[]> => {
 
 // 장바구니 추가/ 업뎃
 export const addOrUpdateToCart = async (
-  userId: User,
+  uid: string | null,
   product: Product,
-): Promise<void> => {
-  return set(ref(database, `carts/${userId}/${product.id}`), product);
+) => {
+  return set(ref(database, `carts/${uid}/${product.id}`), product);
 };
 
 // 장바구니 삭제
-export const removeFromCart = async (
-  userId: User,
-  productId: Product,
-): Promise<void> => {
-  return remove(ref(database, `carts/${userId}/${productId}`));
+export const removeFromCart = async (uid: string | null, id: string) => {
+  return remove(ref(database, `carts/${uid}/${id}`));
 };
