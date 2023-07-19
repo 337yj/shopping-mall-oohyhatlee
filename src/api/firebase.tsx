@@ -60,10 +60,7 @@ const adminUser = async (user: User): Promise<User> => {
 };
 
 // 제품 추가하기
-export const addNewProduct = async (
-  product: Product,
-  imageUrl: string,
-): Promise<void> => {
+export const addNewProduct = async (product: Product, imageUrl: string) => {
   const id = uuid();
   return set(ref(database, `products/${id}`), {
     ...product,

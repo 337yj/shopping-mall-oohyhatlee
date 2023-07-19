@@ -16,7 +16,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 
   useEffect(() => {
     onUserStateChange((user) => {
-      setUser(user || null);
+      setUser(user);
     });
   }, []);
 
