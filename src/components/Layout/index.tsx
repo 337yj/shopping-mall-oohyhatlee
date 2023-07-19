@@ -11,10 +11,11 @@ const Layout = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthContextProvider>
-        <ScrollToTop />
-        <Header />
-        <Outlet />
-        <Footer />
+        <ScrollToTop>
+          <Header />
+          <Outlet />
+          <Footer />
+        </ScrollToTop>
       </AuthContextProvider>
     </QueryClientProvider>
   );
