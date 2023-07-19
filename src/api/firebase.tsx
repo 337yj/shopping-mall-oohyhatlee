@@ -8,6 +8,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { getDatabase, ref, set, get, remove } from "firebase/database";
+import { User } from "../types/common";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -29,11 +30,6 @@ export const login = () => {
 export const logout = () => {
   signOut(auth).catch(console.error);
 };
-
-interface User {
-  uid: string;
-  isAdmin?: boolean;
-}
 
 // 사용자 상태 정보
 export const onUserStateChange = (
