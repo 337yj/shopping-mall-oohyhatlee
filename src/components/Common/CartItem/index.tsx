@@ -2,36 +2,38 @@ import React from "react";
 import useCart from "../../../hooks/useCart";
 import { IconDelete, IconMinus, IconPlus } from "../../../assets/icon";
 import styles from "./cartItem.module.scss";
+import { Product } from "../../../types/common";
 
-const CartItem = ({
-  product,
-  product: { id, image, title, option, quantity, price },
-}) => {
+const CartItem = ({ product }: { product: Product }) => {
   const { addOrUpdateItem, removeItem } = useCart();
 
   const onClickMinus = () => {
-    if (quantity < 2) return;
-    addOrUpdateItem.mutate({ ...product, quantity: quantity - 1 });
+    if (product.quantity < 2) return;
+    addOrUpdateItem.mutate({ ...product, quantity: product.quantity - 1 });
   };
 
   const onClickPlus = () => {
-    addOrUpdateItem.mutate({ ...product, quantity: quantity + 1 });
+    addOrUpdateItem.mutate({ ...product, quantity: product.quantity + 1 });
   };
 
-  const onClickDelete = () => removeItem.mutate(id);
+  const onClickDelete = () => removeItem.mutate(product.id);
 
   return (
     <li className={styles.wrapper}>
-      <img className={styles.productImg} src={image} alt={title} />
+      <img
+        className={styles.productImg}
+        src={product.image}
+        alt={product.title}
+      />
       <div className={styles.InfoWrap}>
         <p className={styles.title}>
-          {title} / {option}
+          {product.title} {product.options}
         </p>
 
-        <p>{`₩ ${price.toLocaleString()}`}</p>
+        <p>{`₩ ${product.price.toLocaleString()}`}</p>
         <div className={styles.quantityWrap}>
           <IconMinus onClick={onClickMinus} />
-          <span>{quantity}</span>
+          <span>{product.quantity}</span>
           <IconPlus onClick={onClickPlus} />
         </div>
 

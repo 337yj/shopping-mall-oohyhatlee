@@ -16,4 +16,6 @@ export interface Product {
   category: string;
   description: string;
   options: string;
+  quantity: number;
+  image: string;
 }
