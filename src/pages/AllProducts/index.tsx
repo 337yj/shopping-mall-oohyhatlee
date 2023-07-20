@@ -5,22 +5,18 @@ import styles from "./allProducts.module.scss";
 
 const AllProducts = () => {
   const {
-    productsQuery: { isLoading, error, data: products },
+    productsQuery: { isLoading, data: products },
   } = useProducts();
 
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchKeyword, setSearchKeyword] = useState("");
 
-  const onSearch = (e) => {
+  const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchKeyword(e.target.value);
   };
 
-  const handleCategorySelect = (category) => {
-    if (category === selectedCategory) {
-      setSelectedCategory(category);
-    } else {
-      setSelectedCategory(category);
-    }
+  const handleCategorySelect = (category: string | null) => {
+    setSelectedCategory(category === selectedCategory ? null : category);
   };
 
   const filteredProducts = products
@@ -39,7 +35,6 @@ const AllProducts = () => {
     <section className={styles.wrapper}>
       <h2 className={styles.subHeader}>Shop the Collection</h2>
       {isLoading && <p className={styles.loading}>Loading...</p>}
-      {error && <p>{error}</p>}
 
       <div className={styles.categoriesWrap}>
         <ul className={styles.categories}>
