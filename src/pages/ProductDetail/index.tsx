@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, MouseEvent } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useCart from "../../hooks/useCart";
 import { Button } from "../../components/Common";
 import styles from "./productDetail.module.scss";
+import { Product } from "../../types/common";
 
 const ProductDetail = () => {
   const { addOrUpdateItem } = useCart();
@@ -13,13 +14,21 @@ const ProductDetail = () => {
       product: { id, image, title, description, category, price, options },
     },
   } = useLocation();
-  const [success, setSuccess] = useState();
-  const [selected, setSelected] = useState(options && options[0]);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [selected, setSelected] = useState<string>(options && options[0]);
 
-  const onChange = (e) => setSelected(e.target.value);
+  const onChange = (e: ChangeEvent<HTMLSelectElement>) =>
+    setSelected(e.target.value);
 
-  const onClick = (e) => {
-    const product = { id, image, title, price, option: selected, quantity: 1 };
+  const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const product: Product = {
+      id,
+      image,
+      title,
+      price,
+      options: selected,
+      quantity: 1,
+    };
     addOrUpdateItem.mutate(product, {
       onSuccess: () => {
         setSuccess("Go to Cart?");
@@ -50,7 +59,7 @@ const ProductDetail = () => {
             <label htmlFor="select">OPTION:</label>
             <select id="select" onChange={onChange} value={selected}>
               {options &&
-                options.map((option, index) => (
+                options.map((option: string, index: number) => (
                   <option key={index}>{option}</option>
                 ))}
             </select>

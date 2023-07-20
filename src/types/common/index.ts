@@ -13,8 +13,8 @@ export interface Product {
   id: string;
   title: string;
   price: string;
-  category: string;
-  description: string;
+  category?: string;
+  description?: string;
   options: string;
   quantity: number;
   image: string;
