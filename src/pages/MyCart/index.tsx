@@ -33,9 +33,9 @@ const MyCart = () => {
               ))}
           </ul>
           <div className={styles.priceWrap}>
-            <PriceCard text="Total" price={totalPrice} />
+            <PriceCard text="Total" price={totalPrice || 0} />
             <PriceCard text="Shipping" price={SHIPPING} />
-            <PriceCard text="	Subtotal" price={totalPrice + SHIPPING} />
+            <PriceCard text="	Subtotal" price={(totalPrice || 0) + SHIPPING} />
           </div>
           <Button text={`PLACE ORDER`} />
         </>
