@@ -1,6 +1,11 @@
 import React from "react";
 
-const PriceCard = ({ text, price }) => {
+interface Price {
+  text: string;
+  price: number;
+}
+
+const PriceCard = ({ text, price }: Price) => {
   return (
     <div>
       <p>{text}</p>
