@@ -12,19 +12,19 @@ const Header = () => {
   const location = useLocation();
 
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  const onClick = (path) => {
+  const onClick = (path: string) => {
     return () => {
       setIsOpen(false);
       navigate(path);
     };
   };
 
-  const scrollToSection = (section) => {
+  const scrollToSection = (section: string) => {
     setIsOpen(false);
     if (location.pathname === "/") {
       scroller.scrollTo(section, {
@@ -45,14 +45,17 @@ const Header = () => {
     }
   };
 
-  const onClickIcon = (e) => {
+  const onClickIcon: React.MouseEventHandler<SVGSVGElement> = (e) => {
     e.stopPropagation();
     setIsOpen((prevIsOpen) => !prevIsOpen);
   };
 
   useEffect(() => {
-    const onClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+    const onClickOutside = (e: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
