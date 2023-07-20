@@ -3,16 +3,26 @@ import { uploadImage } from "../../api/uploader";
 import useProducts from "../../hooks/useProducts";
 import { Button } from "../../components/Common";
 import styles from "./newProduct.module.scss";
+import { Product } from "../../types/common";
 
 const NewProduct = () => {
-  const [product, setProduct] = useState({});
-  const [file, setFile] = useState();
+  const [product, setProduct] = useState<Product>({
+    id: "",
+    title: "",
+    price: "",
+    category: "",
+    description: "",
+    options: "",
+    quantity: 0,
+    image: "",
+  });
+  const [file, setFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
-  const [success, setSuccess] = useState();
+  const [success, setSuccess] = useState<string | null>(null);
   const { addProduct } = useProducts();
 
-  const onChange = (e) => {
-    const { name, value, files } = e.target;
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, files } = e.target as HTMLInputElement;
     if (name === "file") {
       setFile(files && files[0]);
       return;
@@ -23,7 +33,7 @@ const NewProduct = () => {
     }));
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsUploading(true);
     uploadImage(file)
