@@ -12,16 +12,48 @@ const Home = () => {
   const [scrolled3, setScrolled3] = useState(false);
 
   const navigate = useNavigate();
-  const animation1 = useScrollFadeIn("right", 1, 0.4);
-  const animation2 = useScrollFadeIn("left", 1, 0.2);
-  const animation3 = useScrollFadeIn("down", 1, 0.8);
-  const animation4 = useScrollFadeIn("left", 1, 0.4);
-  const animation5 = useScrollFadeIn("place", 1, 0.4);
-  const animation6 = useScrollFadeIn("right", 1, 0.2);
-  const animation7 = useScrollFadeIn("left", 1, 0.3);
-  const animation8 = useScrollFadeIn("left", 1, 0.3);
+  const animation1 = useScrollFadeIn({
+    direction: "down",
+    duration: 1,
+    delay: 0.2,
+  });
+  const animation2 = useScrollFadeIn({
+    direction: "left",
+    duration: 1,
+    delay: 0.2,
+  });
+  const animation3 = useScrollFadeIn({
+    direction: "up",
+    duration: 1,
+    delay: 0.8,
+  });
+  const animation4 = useScrollFadeIn({
+    direction: "left",
+    duration: 1,
+    delay: 0.4,
+  });
+  const animation5 = useScrollFadeIn({
+    direction: "place",
+    duration: 1,
+    delay: 0.4,
+  });
+  const animation6 = useScrollFadeIn({
+    direction: "up",
+    duration: 1,
+    delay: 0.1,
+  });
+  const animation7 = useScrollFadeIn({
+    direction: "left",
+    duration: 1,
+    delay: 0.3,
+  });
+  const animation8 = useScrollFadeIn({
+    direction: "left",
+    duration: 1,
+    delay: 0.3,
+  });
 
-  const onClick = (path) => {
+  const onClick = (path: string) => {
     return () => {
       navigate(path);
     };

@@ -9,7 +9,7 @@ interface ScrollFadeInOptions {
 
 // useScrollFadeIn 함수의 반환 값 타입 지정
 interface ScrollFadeInResult {
-  ref: React.RefObject<HTMLElement>;
+  ref: React.LegacyRef<HTMLParagraphElement>;
   style: React.CSSProperties;
 }
 
@@ -18,8 +18,7 @@ export function useScrollFadeIn({
   duration = 1,
   delay = 0,
 }: ScrollFadeInOptions): ScrollFadeInResult {
-  // useRef에 제네릭으로 HTMLElement 타입을 지정
-  const dom = useRef<HTMLElement>(null);
+  const dom = useRef<HTMLParagraphElement>(null);
 
   const handleDirection = (name: string) => {
     switch (name) {
@@ -47,7 +46,7 @@ export function useScrollFadeIn({
         if (current) {
           current.style.transitionProperty = "all";
           current.style.transitionDuration = `${duration}s`;
-          current.style.transitionTimingFunction = "cubic-bezier(0, 0, 0.2, 1)"; // 오타 수정: cubic-bexier -> cubic-bezier
+          current.style.transitionTimingFunction = "cubic-bezier(0, 0, 0.2, 1)";
           current.style.transitionDelay = `${delay}s`;
           current.style.opacity = "1";
           current.style.transform = "translate3d(0, 0, 0)";
