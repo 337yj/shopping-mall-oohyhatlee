@@ -50,7 +50,7 @@ $ yarn start
 <br/>
 
 ## 기술 스택
-- `React` `JavaScript` `Sass` 
+- `React` `TypeScript` `Sass` 
 - `React-Query` `Context`
 - `firebase` `Cloudinary`
 - `ESLint` `Prettier` 
@@ -72,12 +72,12 @@ $ yarn start
  │     └─ # Header, Footer
  │ 
  ├─ context
- │  └─ AuthContext.js # 사용자 인증 컨텍스트
+ │  └─ AuthContext.tsx # 사용자 인증 컨텍스트
  │ 
  ├─ hooks 
- │  ├─ useCart.js # 장바구니 데이터 페칭,관리 커스텀 훅
- │  ├─ useProducts.js # 상품 데이터 페칭,관리 커스텀 훅
- │  └─ useScrollFadeIn.js # 스크롤 애니메이션 커스텀 훅
+ │  ├─ useCart.tsx # 장바구니 데이터 페칭,관리 커스텀 훅
+ │  ├─ useProducts.tsx # 상품 데이터 페칭,관리 커스텀 훅
+ │  └─ useScrollFadeIn.tsx # 스크롤 애니메이션 커스텀 훅
  │ 
  ├─ pages
  │  ├─ AllProducts # 상품 리스트 페이지
@@ -94,7 +94,7 @@ $ yarn start
  │  ├─ _base.scss
  │  ├─ _reset.scss 
  │  └─ global.scss 
- └─ index.js
+ └─ index.tsx
 ```
         
 
